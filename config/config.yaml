@@ -1,0 +1,308 @@
+#config_version=5
+
+# Stern Pinball v2
+# Steven Kowal - 10/31/20
+
+hardware:
+  platform: lisy
+lisy:
+  connection: network
+  network_port: 5963
+  poll_hz: 100
+  network_host: "192.168.7.48"
+
+segment_displays:
+    display0:
+        number: 0
+    display1:
+        number: 1
+    display2:
+        number: 2
+    display3:
+        number: 3
+    display4:
+        number: 4
+
+segment_display_player:
+  # empty all displays on game start and setup info display
+  game_start:
+    display0:
+      text: "{current_player.ball:d}"
+    display1:
+      text: " "
+    display2:
+      text: " "
+    display3:
+      text: " "
+    display4:
+      text: " "
+
+# show score when adding players
+  player_added.1{num==1}:
+    display1:
+      text: "{players[0].score:d}"
+  player_added.2{num==2}:
+    display2:
+      text: "{players[1].score:d}"
+  player_added.3{num==3}:
+    display3:
+      text: "{players[2].score:d}"
+  player_added.4{num==4}:
+    display4:
+      text: "{players[3].score:d}"
+
+# clear only display0 after game
+  game_ended:
+    display0:
+      text: ""
+  game_ended{machine.player1_score > 0}:
+    display1:
+      text: "{machine.player1_score:d}"
+  game_ended{machine.player2_score > 0}:
+    display2:
+      text: "{machine.player2_score:d}"
+  game_ended{machine.player3_score > 0}:
+    display3:
+      text: "{machine.player3_score:d}"
+  game_ended{machine.player4_score > 0}:
+    display4:
+      text: "{machine.player4_score:d}"
+
+#flash display on player turn
+  player_turn_started.1{number==1}:
+    display1:
+      action: flash
+  player_turn_ended.2{number==1}:
+    display1:
+      action: no_flash
+  player_turn_started.3{number==2}:
+    display2:
+      action: flash
+  player_turn_ended.4{number==2}:
+    display2:
+      action: no_flash
+  player_turn_started.5{number==3}:
+    display3:
+      action: flash
+  player_turn_ended.6{number==3}:
+    display3:
+      action: no_flash
+  player_turn_started.7{number==4}:
+    display4:
+      action: flash
+  player_turn_ended.8{number==4}:
+    display4:
+      action: no_flash
+
+digital_outputs:
+    game_over_relay:
+        number: 1
+        type: light
+        enable_events: ball_started
+        disable_events: ball_will_end
+
+game:
+    balls_per_game: 3
+
+ball_devices:
+    bd_drain:
+        ball_switches: s_outhole
+        eject_coil: c_outhole
+        eject_targets: playfield
+        tags: drain, home, trough
+
+playfields:
+  playfield:
+    default_source_device: bd_drain
+    tags: default
+
+lights:
+  l_bonus_10000:
+    number: 0
+  l_bonus_50000:
+    number: 1
+  l_bonus_90000:
+    number: 2
+  l_advance_bonus:
+    number: 4
+  l_lite_spinner:
+    number: 8  
+  l_lite_top_center_hole:
+    number: 9  
+  l_spinner_1000_when_lit:
+    number: 11  
+  l_bb_ball_in_play:
+    number: 12
+  l_bb_one_player:
+    number: 13
+  l_bonus_20000:
+    number: 15  
+  l_bonus_60000:
+    number: 16
+  l_bonus_100000:
+    number: 17
+  l_left_outlane_extra_ball:  
+    number: 18
+  l_right_outlane_extra_ball:  
+    number: 19
+  l_scores_50000:  
+    number: 23 
+  l_bb_match:
+    number: 25
+  l_lites_triple_bonus_when_list:
+    number: 26 
+  l_bb_game_high_to_date:
+    number: 27
+  l_bb_two_player:
+    number: 28
+  l_bb_two_up:
+    number: 29
+  l_bonus_30000:
+    number: 30
+  l_bonus_70000:
+    number: 31
+  l_top_pop_bumpers:
+    number: 33 
+  l_bottom_pop_bumper:
+    number: 34 
+  l_lites_special_lane:
+    number: 35 
+  l_lites_double_bonus:
+    number: 38
+  l_double_bonus_when_list:
+    number: 41 
+  l_bb_game_over:
+    number: 42 
+  l_bb_three_players:
+    number: 43
+  l_bb_three_up:
+    number: 44
+  l_bonus_40000:
+    number: 45 
+  l_bonus_80000:
+    number: 46
+  l_left_outlane_special_when_list:
+    number: 48 
+  l_right_outlane_special_when_list:
+    number: 49
+  l_lites_extra_ball_lane:
+    number: 53
+  l_triple_bonus_when_list:
+    number: 56
+  l_tilt:
+    number: 57
+  l_bb_four_players:
+    number: 58
+  l_bb_four_up:
+    number: 59
+
+
+switches:
+  s_Test_switch:
+    number: 0
+  s_credit_start:
+    number: 6
+    tags: start
+  s_tilt:
+    number: 7
+  s_outhole:
+    number: 8
+  s_coin_switch3:
+    number: 9
+  s_coin_switch2:
+    number: 10
+  s_coin_switch1:
+    number: 11
+  s_right_saucer:
+    number: 12
+  s_top_saucer:
+    number: 13
+  s_adv_bounus_roll_over:
+    number: 14
+  s_slam:
+    number: 16
+  s_10_points:
+    number: 21
+  s_50_points:
+    number: 22
+  s_right_inner_outline:
+    number: 23
+  s_left_inner_outline:
+    number: 24
+  s_left_center_drop_target:
+    number: 25
+  s_left_out_top_drop_target:
+    number: 26
+  s_left_in_top_drop_target:
+    number: 27
+  s_right_in_top_drop_target:
+    number: 28
+  s_right_out_top_drop_target:
+    number: 29
+  s_spinner:
+    number: 30 
+  s_right_out_outline:
+    number: 31 
+  s_left_out_outline:
+    number: 32
+  s_right_slingshot:
+    number: 36
+  s_left_slingshot:
+    number: 37
+  s_top_bumper:
+    number: 38
+  s_right_bumper:
+    number: 39
+  s_left_bumper:
+    number: 40
+  
+#    number: 66  
+#  s_slam:
+#    number: 76
+
+coils:
+  c_chime_10:
+    number: 1
+  c_thumper_left:
+    number: 11 
+  c_chime_100:
+    number: 2
+  c_thumper_right:
+    number: 12 
+  c_chime_1000:
+    number: 3
+  c_thumper_center:
+    number: 13 
+  c_chime_10000:
+    number: 4
+  c_outhole:
+    number: 7 
+  c_right_slingshot:
+    number: 14 
+  c_right_hole:
+    number: 9
+  c_left_targets:
+    number: 5
+  c_top_hole:
+    number: 8 
+  c_right_targets:
+    number: 10 
+  c_left_slingshot:
+    number: 15
+  c_knocker:
+    number: 6
+  c_flipper_relay:
+    number: 16
+  c_coin_lock_out:
+    number: 17
+
+hardware_sound_systems:
+    default:
+        label: LISY
+
+
+#hardware_sound_player:
+#   game_started:
+#     105: play
+
+
