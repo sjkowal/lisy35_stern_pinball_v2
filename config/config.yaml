@@ -256,10 +256,6 @@ switches:
   s_left_bumper:
     number: 40
   
-#    number: 66  
-#  s_slam:
-#    number: 76
-
 coils:
   c_chime_10:
     number: 1
@@ -295,14 +291,4 @@ coils:
     number: 16
   c_coin_lock_out:
     number: 17
-
-hardware_sound_systems:
-    default:
-        label: LISY
-
-
-#hardware_sound_player:
-#   game_started:
-#     105: play
-
 
