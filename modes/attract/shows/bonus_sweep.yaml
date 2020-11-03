@@ -1,0 +1,61 @@
+#show_version=5
+##! show: bonus_sweep 
+
+- duration: 1
+  lights:
+    l_bonus_10000: ff
+    l_bonus_20000: 00
+    l_bonus_30000: 00 
+    l_bonus_40000: 00 
+    l_bonus_50000: 00 
+    l_bonus_60000: 00 
+    l_bonus_70000: 00 
+    l_bonus_80000: 00 
+    l_bonus_90000: 00 
+    l_bonus_100000: 00 
+
+- duration: 1
+  lights:
+    l_bonus_10000: 00 
+    l_bonus_20000: ff
+
+- duration: 1
+  lights:
+    l_bonus_20000: 00 
+    l_bonus_30000: ff
+
+- duration: 1
+  lights:
+    l_bonus_30000: 00 
+    l_bonus_40000: ff
+
+- duration: 1
+  lights:
+    l_bonus_40000: 00 
+    l_bonus_50000: ff
+
+- duration: 1
+  lights:
+    l_bonus_50000: 00 
+    l_bonus_60000: ff
+
+- duration: 1
+  lights:
+    l_bonus_60000: 00 
+    l_bonus_70000: ff
+
+- duration: 1
+  lights:
+    l_bonus_70000: 00 
+    l_bonus_80000: ff
+
+- duration: 1
+  lights:
+    l_bonus_80000: 00 
+    l_bonus_90000: ff
+
+- duration: 1
+  lights:
+    l_bonus_90000: 00 
+    l_bonus_100000: ff
+

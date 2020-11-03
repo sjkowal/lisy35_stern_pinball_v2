@@ -1,0 +1,44 @@
+#show_version=5
+##! show: attract_light_show
+
+- duration: 1
+  lights:
+    l_advance_bonus: 00 
+    l_lite_spinner: 00 
+    l_lite_top_center_hole: 00 
+    l_spinner_1000_when_lit: 00 
+    l_left_outlane_extra_ball: 00 
+    l_right_outlane_extra_ball: 00 
+    l_scores_50000: 00 
+    l_lites_triple_bonus_when_list: 00 
+    l_top_pop_bumpers: ff
+    l_bottom_pop_bumper: ff
+    l_lites_special_lane: ff
+    l_lites_double_bonus: ff
+    l_double_bonus_when_list: ff
+    l_left_outlane_special_when_list: ff
+    l_right_outlane_special_when_list: ff
+    l_lites_extra_ball_lane: ff
+    l_triple_bonus_when_list: ff
+  
+- duration: 1
+  lights:
+    l_advance_bonus: ff
+    l_lite_spinner: ff 
+    l_lite_top_center_hole: ff
+    l_spinner_1000_when_lit: ff
+    l_left_outlane_extra_ball: ff 
+    l_right_outlane_extra_ball: ff
+    l_scores_50000: ff 
+    l_lites_triple_bonus_when_list: ff
+    l_top_pop_bumpers: 00 
+    l_bottom_pop_bumper: 00  
+    l_lites_special_lane: 00 
+    l_lites_double_bonus: 00 
+    l_double_bonus_when_list: 00 
+    l_left_outlane_special_when_list: 00 
+    l_right_outlane_special_when_list: 00 
+    l_lites_extra_ball_lane: 00 
+    l_triple_bonus_when_list: 00 
+ 
+

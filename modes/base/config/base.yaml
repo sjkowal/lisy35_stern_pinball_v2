@@ -1,5 +1,5 @@
-##! mode: base
 #config_version=5
+##! mode: base
 
 mode:
   start_events: ball_starting

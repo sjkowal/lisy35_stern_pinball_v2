@@ -1,0 +1,9 @@
+#config_version=5
+##! mode: test_mode
+
+show_player:
+  mode_attract_started: 
+    attract_light_show:
+      speed: 1
+    bonus_sweep:
+      speed: 8
