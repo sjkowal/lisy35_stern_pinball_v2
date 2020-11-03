@@ -292,3 +292,6 @@ coils:
   c_coin_lock_out:
     number: 17
 
+modes:
+  - base
+

@@ -1,0 +1,45 @@
+##! mode: base
+#config_version=5
+
+mode:
+  start_events: ball_starting
+  priority: 100
+
+variable_player:
+  s_10_points_active:
+    score: 10
+  s_50_points_active:
+    score: 50
+  s_right_inner_outline_active:
+    number: 100 
+  s_left_inner_outline_active:
+    number: 100 
+  s_adv_bounus_roll_over_active:
+    bonus_count: 1
+  s_left_center_drop_target_active:
+    score: 1000
+  s_left_out_top_drop_target_active:
+    score: 1000 
+  s_left_in_top_drop_target_active:
+    score: 1000 
+  s_right_in_top_drop_target_active:
+    score: 1000 
+  s_right_out_top_drop_target_active:
+    score: 1000 
+  s_spinner_active:
+    score: 100 
+  s_right_out_outline_active:
+    number: 5000 
+  s_left_out_outline_active:
+    number: 5000 
+  s_right_slingshot_active:
+    number: 50 
+  s_left_slingshot_active:
+    number: 50 
+  s_top_bumper_active:
+    number: 1000 
+  s_right_bumper_active:
+    number: 1000 
+  s_left_bumper_active:
+    number: 1000 
+
