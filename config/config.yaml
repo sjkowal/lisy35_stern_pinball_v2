@@ -245,52 +245,97 @@ switches:
     number: 31 
   s_left_out_outline:
     number: 32
-  s_right_slingshot:
+  s_slingshot_right:
     number: 36
-  s_left_slingshot:
+  s_slingshot_left:
     number: 37
-  s_top_bumper:
+  s_thumper_center:
     number: 38
-  s_right_bumper:
+  s_thumper_right:
     number: 39
-  s_left_bumper:
+  s_thumper_left:
     number: 40
   
 coils:
   c_chime_10:
     number: 1
   c_thumper_left:
-    number: 11 
+    number: 11
+    default_pulse_ms: 30
   c_chime_100:
     number: 2
   c_thumper_right:
     number: 12 
+    default_pulse_ms: 30
   c_chime_1000:
     number: 3
   c_thumper_center:
     number: 13 
+    default_pulse_ms: 30
   c_chime_10000:
     number: 4
+    default_pulse_ms: 20
   c_outhole:
-    number: 7 
-  c_right_slingshot:
+    number: 7
+    default_pulse_ms: 30
+  c_slingshot_right:
     number: 14 
-  c_right_hole:
+    default_pulse_ms: 30
+  c_right_saucer:
     number: 9
+    default_pulse_ms: 30
   c_left_targets:
     number: 5
-  c_top_hole:
+  c_top_saucer:
     number: 8 
+    default_pulse_ms: 30
   c_right_targets:
     number: 10 
-  c_left_slingshot:
+  c_slingshot_left:
     number: 15
+    default_pulse_ms: 30
   c_knocker:
     number: 6
   c_flipper_relay:
     number: 16
   c_coin_lock_out:
     number: 17
+
+autofire_coils:
+    ac_thumper_left:
+        coil: c_thumper_left
+        switch: s_thumper_left
+    ac_thumper_right:
+        coil: c_thumper_right
+        switch: s_thumper_right
+    ac_thumper_center:
+        coil: c_thumper_center
+        switch: s_thumper_center
+    ac_slingshot_right:
+        coil: c_thumper_right
+        switch: s_thumper_right
+    ac_slingshot_left:
+        coil: c_slingshot_left
+        switch: s_slingshot_left
+    ac_top_saucer:
+        coil: c_top_saucer
+        switch: s_top_saucer
+    ac_right_saucer:
+        coil: c_right_saucer
+        switch: s_right_saucer
+    ac_chime_thumper_left:
+        coil: c_chime_1000
+        switch: s_thumper_left
+    ac_chime_thumper_right:
+        coil: c_chime_1000
+        switch: s_thumper_right
+    ac_chime_thumper_center:
+        coil: c_chime_1000
+        switch: s_thumper_center
+
+
+
+
 
 modes:
   - base
