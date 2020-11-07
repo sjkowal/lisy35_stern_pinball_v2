@@ -1,0 +1,7 @@
+#config_version=5
+## !mode: bonus
+
+mode_settings:
+  bonus_entries:
+    - event: bonus_advances
+      score: current_player.bonus_count * 10000
