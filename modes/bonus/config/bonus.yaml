@@ -4,4 +4,11 @@
 mode_settings:
   bonus_entries:
     - event: bonus_advances
-      score: current_player.bonus_count * 10000
+      score: 0
+      player_score_entry: bonus_count
+      reset_player_score_entry: True
+      skip_if_zero: True
+
+score_queue_player:
+  bonus_advances:
+    score: 10000

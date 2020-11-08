@@ -6,16 +6,18 @@ mode:
   priority: 100
 
 variable_player:
-  s_10_points_active:
+  s_adv_bounus_roll_over_active:
+    bonus_count: 1
+      
+score_queue_player:
+  score_10_points:
     score: 10
-  s_50_points_active:
+  score_50_points:
     score: 50
   s_right_inner_outline_active:
     score: 100 
   s_left_inner_outline_active:
     score: 100 
-  s_adv_bounus_roll_over_active:
-    bonus_count: 1
   s_left_center_drop_target_active:
     score: 1000
   s_left_out_top_drop_target_active:
@@ -26,20 +28,18 @@ variable_player:
     score: 1000 
   s_right_out_top_drop_target_active:
     score: 1000 
-  s_spinner_active:
+  score_spinner:
     score: 100 
-  s_right_out_outline_active:
+  score_saucer:
     score: 5000 
-  s_left_out_outline_active:
+  score_outlane:
     score: 5000 
-  s_right_slingshot_active:
-    score: 50 
-  s_left_slingshot_active:
-    score: 50 
-  s_top_bumper_active:
-    score: 1000 
-  s_right_bumper_active:
-    score: 1000 
-  s_left_bumper_active:
-    score: 1000 
-
+  score_inlane:
+    score: 5000 
+  score_slingshot:
+    score: 10 
+  score_thumper:
+    score: 1000
+  score_advance_bonus:
+    score: 1000
+  

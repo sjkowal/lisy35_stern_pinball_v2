@@ -8,7 +8,7 @@ hardware:
 lisy:
   connection: network
   network_port: 5963
-  poll_hz: 100
+  poll_hz: 50
   network_host: "192.168.7.48"
 
 segment_displays:
@@ -216,20 +216,27 @@ switches:
     number: 11
   s_right_saucer:
     number: 12
+    events_when_activated: score_saucer
   s_top_saucer:
     number: 13
+    events_when_activated: score_saucer
   s_adv_bounus_roll_over:
     number: 14
+    events_when_activated: score_advance_bonus
   s_slam:
     number: 16
   s_10_points:
     number: 21
+    events_when_activated: score_10_points
   s_50_points:
     number: 22
+    events_when_activated: score_50_points
   s_right_inner_outline:
     number: 23
+    events_when_activated: score_inlane
   s_left_inner_outline:
     number: 24
+    events_when_activated: score_inlane
   s_left_center_drop_target:
     number: 25
   s_left_out_top_drop_target:
@@ -242,37 +249,45 @@ switches:
     number: 29
   s_spinner:
     number: 30 
+    events_when_activated: score_spinner
   s_right_out_outline:
     number: 31 
+    events_when_activated: score_outlane
   s_left_out_outline:
     number: 32
+    events_when_activated: score_outlane
   s_slingshot_right:
     number: 36
+    events_when_activated: score_slingshot
   s_slingshot_left:
     number: 37
+    events_when_activated: score_slingshot
   s_thumper_center:
     number: 38
+    events_when_activated: score_thumper
   s_thumper_right:
     number: 39
+    events_when_activated: score_thumper
   s_thumper_left:
     number: 40
+    events_when_activated: score_thumper
   
 coils:
   c_chime_10:
     number: 1
   c_thumper_left:
     number: 11
-    default_pulse_ms: 30
+    default_pulse_ms: 20
   c_chime_100:
     number: 2
   c_thumper_right:
     number: 12 
-    default_pulse_ms: 30
+    default_pulse_ms: 20
   c_chime_1000:
     number: 3
   c_thumper_center:
     number: 13 
-    default_pulse_ms: 30
+    default_pulse_ms: 20
   c_chime_10000:
     number: 4
     default_pulse_ms: 20
@@ -281,26 +296,50 @@ coils:
     default_pulse_ms: 30
   c_slingshot_right:
     number: 14 
-    default_pulse_ms: 30
+    default_pulse_ms: 20
   c_right_saucer:
     number: 9
-    default_pulse_ms: 30
+    default_pulse_ms: 20
   c_left_targets:
     number: 5
+    default_pulse_ms: 30
   c_top_saucer:
     number: 8 
-    default_pulse_ms: 30
+    default_pulse_ms: 20
   c_right_targets:
     number: 10 
+    default_pulse_ms: 30
   c_slingshot_left:
     number: 15
-    default_pulse_ms: 30
+    default_pulse_ms: 20
   c_knocker:
     number: 6
   c_flipper_relay:
     number: 16
   c_coin_lock_out:
     number: 17
+
+drop_targets:
+  left:
+    switch: s_left_center_drop_target
+  left_out_top:
+    switch: s_left_out_top_drop_target
+  left_in_top:
+    switch: s_left_in_top_drop_target
+  right_out_top:
+    switch: s_right_out_top_drop_target
+  right_in_top:
+    switch: s_right_in_top_drop_target
+
+drop_target_banks:
+  single_targets_bank:
+    drop_targets: left, left_out_top, left_in_top, right_out_top, right_in_top
+    reset_coils: c_left_targets, c_right_targets
+    reset_on_complete: 1s
+    reset_events:
+      ball_started: 0
+      machine_reset_phase_3: 0
+
 
 autofire_coils:
     ac_thumper_left:
@@ -315,7 +354,7 @@ autofire_coils:
     ac_slingshot_right:
         coil: c_thumper_right
         switch: s_thumper_right
-    ac_slingshot_left:
+    ac_slingshot_leftscore:
         coil: c_slingshot_left
         switch: s_slingshot_left
     ac_top_saucer:
@@ -324,7 +363,12 @@ autofire_coils:
     ac_right_saucer:
         coil: c_right_saucer
         switch: s_right_saucer
-    
+
+
+score_queues:
+    score:
+        chimes: c_chime_10000, c_chime_1000, c_chime_100, c_chime_10,  None
+
 
 modes:
   - base
