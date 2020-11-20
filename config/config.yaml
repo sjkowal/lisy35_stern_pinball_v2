@@ -11,6 +11,14 @@ lisy:
   poll_hz: 50
   network_host: "192.168.7.48"
 
+player_vars:
+  multiplier:
+    value_type: int
+    initial_value: 1
+  bonus:
+    value_type: int
+    initial_value: 0
+
 segment_displays:
     display0:
         number: 0
@@ -72,25 +80,37 @@ segment_display_player:
   player_turn_started.1{number==1}:
     display1:
       action: flash
-  player_turn_ended.2{number==1}:
+  player_score_changed.1{player_num==1}:
     display1:
       action: no_flash
-  player_turn_started.3{number==2}:
+  player_turn_ended.1{number==1}:
+    display1:
+      action: no_flash
+  player_turn_started.2{number==2}:
     display2:
       action: flash
-  player_turn_ended.4{number==2}:
+  player_score_changed.2{player_num==2}:
     display2:
       action: no_flash
-  player_turn_started.5{number==3}:
+  player_turn_ended.2{number==2}:
+    display2:
+      action: no_flash
+  player_turn_started.3{number==3}:
     display3:
       action: flash
-  player_turn_ended.6{number==3}:
+  player_score_changed.3{player_num==3}:
     display3:
       action: no_flash
-  player_turn_started.7{number==4}:
+  player_turn_ended.3{number==3}:
+    display3:
+      action: no_flash
+  player_turn_started.4{number==4}:
     display4:
       action: flash
-  player_turn_ended.8{number==4}:
+  player_score_changed.4{player_num==4}:
+    display4:
+      action: no_flash
+  player_turn_ended.4{number==4}:
     display4:
       action: no_flash
 
@@ -120,10 +140,13 @@ playfields:
 lights:
   l_bonus_10000:
     number: 0
+    tags: bonus
   l_bonus_50000:
     number: 1
+    tags: bonus
   l_bonus_90000:
     number: 2
+    tags: bonus
   l_advance_bonus:
     number: 4
   l_lite_spinner:
@@ -138,10 +161,13 @@ lights:
     number: 13
   l_bonus_20000:
     number: 15  
+    tags: bonus
   l_bonus_60000:
     number: 16
+    tags: bonus
   l_bonus_100000:
     number: 17
+    tags: bonus
   l_left_outlane_extra_ball:  
     number: 18
   l_right_outlane_extra_ball:  
@@ -160,8 +186,10 @@ lights:
     number: 29
   l_bonus_30000:
     number: 30
+    tags: bonus
   l_bonus_70000:
     number: 31
+    tags: bonus
   l_top_pop_bumpers:
     number: 33 
   l_bottom_pop_bumper:
@@ -180,8 +208,10 @@ lights:
     number: 44
   l_bonus_40000:
     number: 45 
+    tags: bonus
   l_bonus_80000:
     number: 46
+    tags: bonus
   l_left_outlane_special_when_list:
     number: 48 
   l_right_outlane_special_when_list:
@@ -364,13 +394,11 @@ autofire_coils:
         coil: c_right_saucer
         switch: s_right_saucer
 
-
 score_queues:
     score:
         chimes: c_chime_10000, c_chime_1000, c_chime_100, c_chime_10,  None
 
-
 modes:
   - base
-  - bonus
+  - bonus_countdown
 
