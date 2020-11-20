@@ -39,7 +39,6 @@ score_queue_player:
   bonus_advances:
     score: 10000 * current_player.multiplier
 
-
 light_player:
   "{current_player.bonus%10>=1}":
     l_bonus_10000: on
@@ -61,29 +60,3 @@ light_player:
     l_bonus_90000: on
   "{current_player.bonus>=10}":
     l_bonus_100000: on
-
-
-# light_player:
-#   player_bonus:
-#     bonus: off
-#   player_bonus{value%10>=1}:
-#     l_bonus_10000: on
-#   player_bonus{value%10>=2}:
-#     l_bonus_20000: on
-#   player_bonus{value%10>=3}:
-#     l_bonus_30000: on
-#   player_bonus{value%10>=4}:
-#     l_bonus_40000: on
-#   player_bonus{value%10>=5}:
-#     l_bonus_50000: on
-#   player_bonus{value%10>=6}:
-#     l_bonus_60000: on
-#   player_bonus{value%10>=7}:
-#     l_bonus_70000: on
-#   player_bonus{value%10>=8}:
-#     l_bonus_80000: on
-#   player_bonus{value%10>=9}:
-#     l_bonus_90000: on
-#   player_bonus{value>=10}:
-#     l_bonus_100000: on
-
