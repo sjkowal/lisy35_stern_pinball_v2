@@ -5,6 +5,11 @@ mode:
   start_events: ball_will_end
   priority: 200
 
+queue_relay_player:
+  ball_ending:
+    post: bonus_countdown_started
+    wait_for: mode_bonus_countdown_ended
+
 variable_player:
   timer_player_bonus_tick:
     bonus:
@@ -29,11 +34,6 @@ timers:
     control_events:
       - action: start
         event: trigger_countdown 
-
-queue_relay_player:
-  ball_ending:
-    post: bonus_countdown_started
-    wait_for: mode_bonus_countdown_ended
 
 score_queue_player:
   bonus_advances:
