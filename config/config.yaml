@@ -18,18 +18,36 @@ player_vars:
   bonus:
     value_type: int
     initial_value: 0
+  saucer_feature_is_enabled:
+    value_type: int
+    initial_value: 1
+  saucer_feature_lite_spinner:
+    value_type: int
+    initial_value: 0
+  saucer_feature_scores_50k:
+    value_type: int
+    initial_value: 0
+  saucer_feature_lites_double_bonus:
+    value_type: int
+    initial_value: 0
+  saucer_feature_lites_extra_ball:
+    value_type: int
+    initial_value: 0
+  saucer_feature_lites_top_center_hole:
+    value_type: int
+    initial_value: 0
 
 segment_displays:
     display0:
-        number: 0
+      number: 0
     display1:
-        number: 1
+      number: 1
     display2:
-        number: 2
+      number: 2
     display3:
-        number: 3
+      number: 3
     display4:
-        number: 4
+      number: 4
 
 segment_display_player:
   # empty all displays on game start and setup info display
@@ -125,11 +143,15 @@ game:
     balls_per_game: 3
 
 ball_devices:
-    bd_drain:
-        ball_switches: s_outhole
-        eject_coil: c_outhole
-        eject_targets: playfield
-        tags: drain, home, trough
+  bd_drain:
+    ball_switches: s_outhole
+    eject_coil: c_outhole
+    eject_targets: playfield
+    tags: drain, home, trough
+  bd_right_saucer:
+    ball_switches: s_right_saucer
+    eject_coil: c_right_saucer
+    eject_timeouts: 1s
 
 playfields:
   playfield:
@@ -138,6 +160,20 @@ playfields:
     enable_ball_search: True
 
 lights:
+  l_saucer_feature_lite_spinner:
+    number: 8  
+  l_saucer_feature_scores_50k:  
+    number: 23 
+  l_saucer_feature_lites_double_bonus:
+    number: 38
+  l_saucer_feature_lites_extra_ball_lane:
+    number: 53
+  l_saucer_feature_lites_top_center_hole:
+    number: 9  
+  l_lites_triple_bonus_when_list:
+    number: 26 
+  l_lites_special_lane:
+    number: 35 
   l_bonus_10000:
     number: 0
     tags: bonus
@@ -149,10 +185,6 @@ lights:
     tags: bonus
   l_advance_bonus:
     number: 4
-  l_lite_spinner:
-    number: 8  
-  l_lite_top_center_hole:
-    number: 9  
   l_spinner_1000_when_lit:
     number: 11  
   l_bb_ball_in_play:
@@ -172,12 +204,8 @@ lights:
     number: 18
   l_right_outlane_extra_ball:  
     number: 19
-  l_scores_50000:  
-    number: 23 
   l_bb_match:
     number: 25
-  l_lites_triple_bonus_when_list:
-    number: 26 
   l_bb_game_high_to_date:
     number: 27
   l_bb_two_player:
@@ -194,10 +222,6 @@ lights:
     number: 33 
   l_bottom_pop_bumper:
     number: 34 
-  l_lites_special_lane:
-    number: 35 
-  l_lites_double_bonus:
-    number: 38
   l_double_bonus_when_list:
     number: 41 
   l_bb_game_over:
@@ -216,8 +240,6 @@ lights:
     number: 48 
   l_right_outlane_special_when_list:
     number: 49
-  l_lites_extra_ball_lane:
-    number: 53
   l_triple_bonus_when_list:
     number: 56
   l_tilt:
@@ -246,7 +268,7 @@ switches:
     number: 11
   s_right_saucer:
     number: 12
-    events_when_activated: score_saucer
+  #  events_when_activated: score_saucer
   s_top_saucer:
     number: 13
     events_when_activated: score_saucer
@@ -390,9 +412,16 @@ autofire_coils:
     ac_top_saucer:
         coil: c_top_saucer
         switch: s_top_saucer
-    ac_right_saucer:
-        coil: c_right_saucer
-        switch: s_right_saucer
+
+shows:
+    flashing:
+      - time: 0
+        lights:
+            (lights): on
+      - time: .5
+        lights:
+            (lights): off
+      - time: 1
 
 score_queues:
     score:

@@ -1,0 +1,30 @@
+#show_version=5
+##! show: saucer_feature_sweep 
+
+- duration: 1
+  lights:
+    l_saucer_feature_lite_spinner: 00 
+    l_saucer_feature_scores_50k: 00 
+    l_saucer_feature_lites_double_bonus: 00
+    l_saucer_feature_lites_extra_ball_lane: 00
+    l_saucer_feature_lites_top_center_hole: ff 
+
+- duration: 1
+  lights:
+    l_saucer_feature_lites_extra_ball_lane: ff 
+    l_saucer_feature_lites_top_center_hole: 00 
+
+- duration: 1
+  lights:
+    l_saucer_feature_lites_double_bonus: ff 
+    l_saucer_feature_lites_extra_ball_lane: 00
+
+- duration: 1
+  lights:
+    l_saucer_feature_scores_50k: ff 
+    l_saucer_feature_lites_double_bonus: 00
+
+- duration: 1
+  lights:
+    l_saucer_feature_lite_spinner: ff 
+    l_saucer_feature_scores_50k: 00 

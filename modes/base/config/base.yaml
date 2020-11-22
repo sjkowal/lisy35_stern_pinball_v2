@@ -6,9 +6,90 @@ mode:
   priority: 100
 
 variable_player:
+  mode_base_started:
+    saucer_feature_lite_spinner: 
+      int: 1
+      action: set
+    saucer_feature_scores_50k:
+      int: 0
+      action: set 
+    spinner_multiplier:
+      int: 1
+      action: set
+    saucer_feature_is_enabled: 
+      int: 1
+      action: set
   s_adv_bounus_roll_over_active:
     bonus: 1
-      
+  enable_lite_spinner:
+    saucer_feature_lite_spinner: 
+      int: 2
+      action: set
+    spinner_multiplier:
+      int: 10
+      action: set
+    saucer_feature_scores_50k: 
+      int: 1
+      action: set
+  end_score_50k:
+    saucer_feature_scores_50k:
+      int: 2
+      action: set
+    saucer_feature_is_enabled:
+      int: 0
+      action: set
+  ball_will_end:
+    saucer_feature_lite_spinner: 
+      int: 0
+      action: set
+    saucer_feature_scores_50k:
+      int: 0
+      action: set 
+
+queue_relay_player:
+  balldevice_bd_right_saucer_ball_eject_attempt:
+    post: right_saucer_feature_started
+    wait_for: right_saucer_feature_ended
+
+event_player:
+  right_saucer_feature_started.1{current_player.saucer_feature_is_enabled==0}: 
+    - right_saucer_feature_ended
+  right_saucer_feature_started.2{current_player.saucer_feature_lite_spinner==1}:
+    - start_score_5k
+  right_saucer_feature_started.3{current_player.saucer_feature_scores_50k==1}:
+    - start_score_5k
+  timer_score_5k_tick:
+    - score_1k
+  timer_score_5k_complete.1{current_player.saucer_feature_lite_spinner==1}:
+    - enable_lite_spinner
+    - right_saucer_feature_ended
+  timer_score_5k_complete.2{current_player.saucer_feature_scores_50k==1}:
+    - start_score_50k
+  timer_score_50k_tick:
+    - score_10k
+  timer_score_50k_complete:
+    - end_score_50k 
+  end_score_50k:
+    - right_saucer_feature_ended
+
+timers:
+  score_5k:
+    start_value: 5 
+    end_value: 0
+    direction: down
+    tick_interval: 250ms
+    control_events:
+      - action: restart
+        event: start_score_5k 
+  score_50k:
+    start_value: 5 
+    end_value: 0
+    direction: down
+    tick_interval: 250ms
+    control_events:
+      - action: restart
+        event: start_score_50k 
+       
 score_queue_player:
   score_10_points:
     score: 10
@@ -29,7 +110,7 @@ score_queue_player:
   s_right_out_top_drop_target_active:
     score: 1000 
   score_spinner:
-    score: 100 
+    score: 100 * current_player.spinner_multiplier
   score_saucer:
     score: 5000 
   score_outlane:
@@ -42,8 +123,50 @@ score_queue_player:
     score: 1000
   score_advance_bonus:
     score: 1000
+  score_10k:
+    score: 10000
+  score_1k:
+    score: 1000
+
+show_player:
+    player_saucer_feature_lite_spinner{value==1}:
+        flashing:
+            show_tokens:
+                lights: l_saucer_feature_lite_spinner
+            key: saucer_feature_lite_spinnerShow
+            action: play
+            priority: 100
+            speed: 3
+    player_saucer_feature_lite_spinner{value==2}:
+        saucer_feature_lite_spinnerShow: stop
+    player_saucer_feature_lite_spinner{value==0}:
+        saucer_feature_lite_spinnerShow: stop
+    player_saucer_feature_scores_50k{value==1}:
+        flashing:
+            show_tokens:
+                lights: l_saucer_feature_scores_50k
+            key: saucer_feature_scores_50kShow
+            action: play
+            priority: 100
+            speed: 5
+    player_saucer_feature_scores_50k{value==2}:
+        saucer_feature_scores_50kShow: stop
+    player_saucer_feature_scores_50k{value==0}:
+        saucer_feature_scores_50kShow: stop
 
 light_player:
+  "{current_player.saucer_feature_lite_spinner==2}":
+    l_saucer_feature_lite_spinner: on
+  "{current_player.saucer_feature_scores_50k==2}":
+    l_saucer_feature_scores_50k: on
+  "{current_player.saucer_feature_lites_double_bonus==2}":
+    l_saucer_feature_lites_double_bonus: on
+  "{current_player.saucer_feature_lites_extra_ball_lane==2}":
+    l_saucer_feature_lites_extra_ball_lane: on
+  "{current_player.saucer_feature_lites_top_center_hole==2}":
+    l_saucer_feature_lites_top_center_hole: on
+  "{current_player.spinner_multiplier==10}":
+    l_spinner_1000_when_lit: on
   "{current_player.bonus%10>=1}":
     l_bonus_10000: on
   "{current_player.bonus%10>=2}":
@@ -64,6 +187,3 @@ light_player:
     l_bonus_90000: on
   "{current_player.bonus>=10}":
     l_bonus_100000: on
-
-  
-  
