@@ -18,6 +18,15 @@ player_vars:
   bonus:
     value_type: int
     initial_value: 0
+  lite_double_bonus:
+    value_type: int
+    initial_value: 0
+  lite_extra_ball:
+    value_type: int
+    initial_value: 0
+  lite_triple_bonus_collect:
+    value_type: int
+    initial_value: 0
   saucer_feature_is_enabled:
     value_type: int
     initial_value: 1
@@ -151,7 +160,12 @@ ball_devices:
   bd_right_saucer:
     ball_switches: s_right_saucer
     eject_coil: c_right_saucer
-    eject_timeouts: 1s
+    eject_timeouts: 2s
+  bd_top_saucer:
+    ball_switches: s_top_saucer
+    eject_coil: c_top_saucer
+    eject_timeouts: 2s
+
 
 playfields:
   playfield:
@@ -222,7 +236,7 @@ lights:
     number: 33 
   l_bottom_pop_bumper:
     number: 34 
-  l_double_bonus_when_list:
+  l_double_bonus_when_lit:
     number: 41 
   l_bb_game_over:
     number: 42 
@@ -268,10 +282,8 @@ switches:
     number: 11
   s_right_saucer:
     number: 12
-  #  events_when_activated: score_saucer
   s_top_saucer:
     number: 13
-    events_when_activated: score_saucer
   s_adv_bounus_roll_over:
     number: 14
     events_when_activated: score_advance_bonus
@@ -409,9 +421,6 @@ autofire_coils:
     ac_slingshot_leftscore:
         coil: c_slingshot_left
         switch: s_slingshot_left
-    ac_top_saucer:
-        coil: c_top_saucer
-        switch: s_top_saucer
 
 shows:
     flashing:
