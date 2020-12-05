@@ -25,6 +25,9 @@ variable_player:
     lite_double_bonus:
       int: 0
       action: set
+    multiplier:
+      int: 1
+      action: set
   s_adv_bounus_roll_over_active:
     bonus: 1
   enable_lite_spinner:
@@ -50,6 +53,9 @@ variable_player:
       action: set
     lite_double_bonus:
       int: 1
+      action: set
+    multiplier:
+      int: 2
       action: set
     saucer_feature_lites_extra_ball:
       int: 1
@@ -82,6 +88,11 @@ variable_player:
       int: 0
       action: set 
 
+segment_display_player:
+  ball_started:
+    display0:
+      text: "99"
+  
 queue_relay_player:
   balldevice_bd_right_saucer_ball_eject_attempt:
     post: right_saucer_feature_started
@@ -131,7 +142,7 @@ timers:
     start_value: 5 
     end_value: 0
     direction: down
-    tick_interval: 250ms
+    tick_interval: 100ms
     control_events:
       - action: restart
         event: start_score_5k 
@@ -147,7 +158,7 @@ timers:
     start_value: 5 
     end_value: 0
     direction: down
-    tick_interval: 250ms
+    tick_interval: 100ms
     control_events:
       - action: restart
         event: start_score_50k 
