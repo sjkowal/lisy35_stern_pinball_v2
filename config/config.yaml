@@ -9,7 +9,7 @@ lisy:
   connection: network
   network_port: 5963
   poll_hz: 50
-  network_host: "192.168.7.48"
+  network_host: "192.168.7.60"
 
 player_vars:
   multiplier:
@@ -416,8 +416,8 @@ autofire_coils:
         coil: c_thumper_center
         switch: s_thumper_center
     ac_slingshot_right:
-        coil: c_thumper_right
-        switch: s_thumper_right
+        coil: c_slingshot_right
+        switch: s_slingshot_right
     ac_slingshot_leftscore:
         coil: c_slingshot_left
         switch: s_slingshot_left
@@ -433,6 +433,7 @@ shows:
       - time: 1
 
 score_queues:
+    delay: 100
     score:
         chimes: c_chime_10000, c_chime_1000, c_chime_100, c_chime_10,  None
 

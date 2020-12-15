@@ -1,0 +1,14 @@
+#config_version=5
+##! mode: spinner_tracker 
+
+mode:
+  start_events: ball_starting
+  priority: 100
+
+counters:
+  super_spinner:
+    count_events: s_spinner
+    starting_count: 0
+    count_complete_value: 20
+    direction: up 
+    events_when_complete: super_spinner_lit

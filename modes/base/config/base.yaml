@@ -294,3 +294,7 @@ light_player:
     l_bonus_90000: on
   "{current_player.bonus>=10}":
     l_bonus_100000: on
+
+
+modes:
+  - saucer_features
