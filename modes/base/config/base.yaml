@@ -6,82 +6,9 @@ mode:
   priority: 100
 
 variable_player:
-  mode_base_started:
-    saucer_feature_lite_spinner: 
-      int: 1
-      action: set
-    saucer_feature_scores_50k:
-      int: 0
-      action: set
-    saucer_feature_lites_double_bonus:
-      int: 0
-      action: set
-    spinner_multiplier:
-      int: 1
-      action: set
-    saucer_feature_is_enabled: 
-      int: 1
-      action: set
-    lite_double_bonus:
-      int: 0
-      action: set
   s_adv_bounus_roll_over_active:
     bonus: 1
-  enable_lite_spinner:
-    saucer_feature_lite_spinner: 
-      int: 2
-      action: set
-    spinner_multiplier:
-      int: 10
-      action: set
-    saucer_feature_scores_50k: 
-      int: 1
-      action: set
-  end_score_50k:
-    saucer_feature_scores_50k:
-      int: 2
-      action: set
-    saucer_feature_lites_double_bonus:
-      int: 1
-      action: set
-  enable_double_bonus:
-    saucer_feature_lites_double_bonus:
-      int: 2
-      action: set
-    lite_double_bonus:
-      int: 1
-      action: set
-    saucer_feature_lites_extra_ball:
-      int: 1
-      action: set
-  enable_lite_extra_ball:
-    saucer_feature_lites_extra_ball:
-      int: 2
-      action: set
-    lite_extra_ball:
-      int: 1
-      action: set
-    saucer_feature_lites_top_center_hole:
-      int: 1
-      action: set
-  enable_lite_triple_bonus_collect:
-    saucer_feature_lites_top_center_hole:
-      int: 2
-      action: set
-    lite_triple_bonus_collect:
-      int: 1
-      action: set
-    saucer_feature_is_enabled:
-      int: 0
-      action: set
-  ball_will_end:
-    saucer_feature_lite_spinner: 
-      int: 0
-      action: set
-    saucer_feature_scores_50k:
-      int: 0
-      action: set 
-
+  
 queue_relay_player:
   balldevice_bd_right_saucer_ball_eject_attempt:
     post: right_saucer_feature_started
@@ -90,68 +17,39 @@ queue_relay_player:
     post: top_saucer_feature_started
     wait_for: top_saucer_feature_ended
 
-
 event_player:
   right_saucer_feature_started: 
-    - start_score_5k
+    - start_right_saucer_score_5k
+  timer_right_saucer_score_5k_tick:
+    - score_100
+  timer_right_saucer_score_5k_complete:
+    - right_saucer_feature_ended
+
   top_saucer_feature_started:
-    - start_top_score_5k
-  timer_score_5k_tick:
+    - start_top_saucer_score_5k
+  timer_top_saucer_score_5k_tick:
     - score_1k
-  timer_top_score_5k_tick:
-    - score_1k
-  timer_top_score_5k_complete:
+  timer_top_saucer_score_5k_complete:
     - top_saucer_feature_ended
-  timer_score_5k_complete.1{current_player.saucer_feature_is_enabled==0}:
-    - right_saucer_feature_ended
-  timer_score_5k_complete.2{current_player.saucer_feature_lite_spinner==1}:
-    - enable_lite_spinner
-    - right_saucer_feature_ended
-  timer_score_5k_complete.3{current_player.saucer_feature_scores_50k==1}:
-    - start_score_50k
-  timer_score_5k_complete.4{current_player.saucer_feature_lites_double_bonus==1}:
-    - enable_double_bonus 
-    - right_saucer_feature_ended
-  timer_score_5k_complete.5{current_player.saucer_feature_lites_extra_ball==1}:
-    - enable_lite_extra_ball 
-    - right_saucer_feature_ended
-  timer_score_5k_complete.6{current_player.saucer_feature_lites_top_center_hole==1}:
-    - enable_lite_triple_bonus_collect
-    - right_saucer_feature_ended
-
-  timer_score_50k_tick:
-    - score_10k
-  timer_score_50k_complete:
-    - end_score_50k 
-  end_score_50k:
-    - right_saucer_feature_ended
-
+   
 timers:
-  score_5k:
+  right_saucer_score_5k:
     start_value: 5 
     end_value: 0
     direction: down
-    tick_interval: 250ms
+    tick_interval: 100ms
     control_events:
       - action: restart
-        event: start_score_5k 
-  top_score_5k:
+        event: start_right_saucer_score_5k 
+  top_saucer_score_5k:
     start_value: 5 
     end_value: 0
     direction: down
-    tick_interval: 250ms
+    tick_interval: 100ms
     control_events:
       - action: restart
-        event: start_top_score_5k 
-  score_50k:
-    start_value: 5 
-    end_value: 0
-    direction: down
-    tick_interval: 250ms
-    control_events:
-      - action: restart
-        event: start_score_50k 
-       
+        event: start_top_saucer_score_5k 
+         
 score_queue_player:
   score_10_points:
     score: 10
@@ -189,69 +87,8 @@ score_queue_player:
     score: 10000
   score_1k:
     score: 1000
-
-show_player:
-    player_saucer_feature_lite_spinner{value==1}:
-        flashing:
-            show_tokens:
-                lights: l_saucer_feature_lite_spinner
-            key: saucer_feature_lite_spinnerShow
-            action: play
-            priority: 100
-            speed: 3
-    player_saucer_feature_lite_spinner{value==2}:
-        saucer_feature_lite_spinnerShow: stop
-    player_saucer_feature_lite_spinner{value==0}:
-        saucer_feature_lite_spinnerShow: stop
-    player_saucer_feature_scores_50k{value==1}:
-        flashing:
-            show_tokens:
-                lights: l_saucer_feature_scores_50k
-            key: saucer_feature_scores_50kShow
-            action: play
-            priority: 100
-            speed: 5
-    player_saucer_feature_scores_50k{value==2}:
-        saucer_feature_scores_50kShow: stop
-    player_saucer_feature_scores_50k{value==0}:
-        saucer_feature_scores_50kShow: stop
-    player_saucer_feature_lites_double_bonus{value==1}:
-        flashing:
-            show_tokens:
-                lights: l_saucer_feature_lites_double_bonus
-            key: saucer_feature_lites_double_bonusShow
-            action: play
-            priority: 100
-            speed: 5
-    player_saucer_feature_lites_double_bonus{value==2}:
-        saucer_feature_lites_double_bonusShow: stop
-    player_saucer_feature_lites_double_bonus{value==0}:
-        saucer_feature_lites_double_bonusShow: stop
-    player_saucer_feature_lites_extra_ball{value==1}:
-        flashing:
-            show_tokens:
-                lights: l_saucer_feature_lites_extra_ball_lane
-            key: saucer_feature_lites_extra_ballShow
-            action: play
-            priority: 100
-            speed: 5
-    player_saucer_feature_lites_extra_ball{value==2}:
-        saucer_feature_lites_extra_ballShow: stop
-    player_saucer_feature_lites_extra_ball{value==0}:
-        saucer_feature_lites_extra_ballShow: stop
-    player_saucer_feature_lites_top_center_hole{value==1}:
-        flashing:
-            show_tokens:
-                lights: l_lites_triple_bonus_when_list
-            key: saucer_feature_lites_top_center_holeShow
-            action: play
-            priority: 100
-            speed: 5
-    player_saucer_feature_lites_top_center_hole{value==2}:
-        saucer_feature_lites_top_center_holeShow: stop
-    player_saucer_feature_lites_top_center_hole{value==0}:
-        saucer_feature_lites_top_center_holeShow: stop
-
+  score_100:
+    score: 100
 
 
 light_player:
@@ -296,5 +133,3 @@ light_player:
     l_bonus_100000: on
 
 
-modes:
-  - saucer_features

@@ -171,7 +171,7 @@ playfields:
   playfield:
     default_source_device: bd_drain
     tags: default
-    enable_ball_search: True
+    # enable_ball_search: True
 
 lights:
   l_saucer_feature_lite_spinner:
@@ -313,7 +313,7 @@ switches:
     number: 29
   s_spinner:
     number: 30 
-    events_when_activated: score_spinner
+    # events_when_activated: score_spinner
   s_right_out_outline:
     number: 31 
     events_when_activated: score_outlane
@@ -433,11 +433,11 @@ shows:
       - time: 1
 
 score_queues:
-    delay: 100
     score:
         chimes: c_chime_10000, c_chime_1000, c_chime_100, c_chime_10,  None
 
 modes:
   - base
   - bonus_countdown
-
+  - lite_spinner
+  - super_spinner

@@ -1,0 +1,25 @@
+#config_version=5
+
+# This mode handles flashing of the spinner feature on the saucer.  
+
+mode:
+   start_events: super_spinner_collect_lit 
+#  stop_events: right_saucer_feature_ended ball_ended
+#   events_when_stopped: super_spinner_enabled
+   priority: 500
+
+event_player:
+   right_saucer_feature_ended:
+     - super_spinner_enabled
+
+show_player:
+   mode_lite_spinner_started:
+       flashing:
+           show_tokens:
+               lights: l_saucer_feature_lite_spinner
+           key: saucer_feature_lite_spinnerShow
+           action: play
+           priority: 100
+           speed: 5
+   super_spinner_enabled:
+       saucer_feature_lite_spinnerShow: stop
