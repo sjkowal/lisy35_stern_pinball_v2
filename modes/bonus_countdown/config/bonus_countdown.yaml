@@ -3,7 +3,7 @@
 
 mode:
   start_events: ball_will_end
-  priority: 200
+  priority: 5000
 
 queue_relay_player:
   ball_ending:

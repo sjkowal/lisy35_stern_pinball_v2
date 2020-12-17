@@ -24,7 +24,7 @@ counters:
   super_spinner:
     count_events: s_spinner_active,s_spinner_inactive
     starting_count: 0
-    count_complete_value: 20
+    count_complete_value: 40
     direction: up 
     events_when_complete: super_spinner_collect_lit
 
