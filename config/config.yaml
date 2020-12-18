@@ -80,42 +80,42 @@ segment_display_player:
       text: "{machine.player4_score:d}"
 
 #flash display on player turn
-  player_turn_started.1{number==1}:
-    display1:
-      action: flash
-  player_score_changed.1{player_num==1}:
-    display1:
-      action: no_flash
-  player_turn_ended.1{number==1}:
-    display1:
-      action: no_flash
-  player_turn_started.2{number==2}:
-    display2:
-      action: flash
-  player_score_changed.2{player_num==2}:
-    display2:
-      action: no_flash
-  player_turn_ended.2{number==2}:
-    display2:
-      action: no_flash
-  player_turn_started.3{number==3}:
-    display3:
-      action: flash
-  player_score_changed.3{player_num==3}:
-    display3:
-      action: no_flash
-  player_turn_ended.3{number==3}:
-    display3:
-      action: no_flash
-  player_turn_started.4{number==4}:
-    display4:
-      action: flash
-  player_score_changed.4{player_num==4}:
-    display4:
-      action: no_flash
-  player_turn_ended.4{number==4}:
-    display4:
-      action: no_flash
+  # player_turn_started.1{number==1}:
+  #   display1:
+  #     action: flash
+  # player_score_changed.1{player_num==1}:
+  #   display1:
+  #     action: no_flash
+  # player_turn_ended.1{number==1}:
+  #   display1:
+  #     action: no_flash
+  # player_turn_started.2{number==2}:
+  #   display2:
+  #     action: flash
+  # player_score_changed.2{player_num==2}:
+  #   display2:
+  #     action: no_flash
+  # player_turn_ended.2{number==2}:
+  #   display2:
+  #     action: no_flash
+  # player_turn_started.3{number==3}:
+  #   display3:
+  #     action: flash
+  # player_score_changed.3{player_num==3}:
+  #   display3:
+  #     action: no_flash
+  # player_turn_ended.3{number==3}:
+  #   display3:
+  #     action: no_flash
+  # player_turn_started.4{number==4}:
+  #   display4:
+  #     action: flash
+  # player_score_changed.4{player_num==4}:
+  #   display4:
+  #     action: no_flash
+  # player_turn_ended.4{number==4}:
+  #   display4:
+  #     action: no_flash
 
 digital_outputs:
     flipper_enabling_relay:
@@ -262,7 +262,6 @@ switches:
     number: 13
   s_adv_bonus_roll_over:
     number: 14
-    # events_when_activated: score_advance_bonus
   s_slam:
     number: 16
   s_10_points:
@@ -406,6 +405,63 @@ shows:
       lights:
           (lights): off
     - time: 1
+  melody_endball:
+    - time: 3
+      coils:
+        c_chime_1000: pulse
+    - time: 4
+      coils:
+        c_chime_100: pulse
+    - time: 5
+      coils:
+        c_chime_10: pulse
+    - time: 7
+      coils:
+        c_chime_10: pulse
+    - time: 8
+      coils:
+        c_chime_100: pulse
+    - time: 9
+      coils:
+        c_chime_1000: pulse
+  melody_startball:
+    - time: 0
+      coils:
+        c_chime_1000: pulse
+    - time: 2
+      coils:
+        c_chime_1000: pulse
+    - time: 3
+      coils:
+        c_chime_1000: pulse
+    - time: 5
+      coils:
+        c_chime_1000: pulse
+    - time: 6
+      coils:
+        c_chime_100: pulse
+    - time: 7
+      coils:
+        c_chime_1000: pulse
+    - time: 8
+      coils:
+        c_chime_100: pulse
+    - time: 10
+      coils:
+        c_chime_100: pulse
+    - time: 11
+      coils:
+        c_chime_100: pulse
+    - time: 12
+      coils:
+        c_chime_10: pulse
+    - time: 13
+      coils:
+        c_chime_100: pulse
+    - time: 14
+      coils:
+        c_chime_100: pulse
+
 
 score_queues:
   score:

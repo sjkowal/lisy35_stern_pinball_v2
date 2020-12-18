@@ -110,4 +110,12 @@ light_player:
   "{current_player.bonus>=10}":
     l_bonus_100000: on
 
+show_player:
+  ball_started:
+    melody_startball:
+      action: play
+      speed: 7.50
+      loops: 0
+      sync_ms: 1000
+
 
