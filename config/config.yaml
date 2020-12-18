@@ -12,40 +12,16 @@ lisy:
   network_host: "192.168.7.60"
 
 player_vars:
-  multiplier:
-    value_type: int
-    initial_value: 1
   bonus:
     value_type: int
     initial_value: 0
-  lite_double_bonus:
+  bonus_collect_count:
     value_type: int
     initial_value: 0
-  lite_extra_ball:
-    value_type: int
-    initial_value: 0
-  lite_triple_bonus_collect:
-    value_type: int
-    initial_value: 0
-  saucer_feature_is_enabled:
+  bonus_multiplier:
     value_type: int
     initial_value: 1
-  saucer_feature_lite_spinner:
-    value_type: int
-    initial_value: 0
-  saucer_feature_scores_50k:
-    value_type: int
-    initial_value: 0
-  saucer_feature_lites_double_bonus:
-    value_type: int
-    initial_value: 0
-  saucer_feature_lites_extra_ball:
-    value_type: int
-    initial_value: 0
-  saucer_feature_lites_top_center_hole:
-    value_type: int
-    initial_value: 0
-
+  
 segment_displays:
     display0:
       number: 0
@@ -284,9 +260,9 @@ switches:
     number: 12
   s_top_saucer:
     number: 13
-  s_adv_bounus_roll_over:
+  s_adv_bonus_roll_over:
     number: 14
-    events_when_activated: score_advance_bonus
+    # events_when_activated: score_advance_bonus
   s_slam:
     number: 16
   s_10_points:
@@ -313,7 +289,6 @@ switches:
     number: 29
   s_spinner:
     number: 30 
-    # events_when_activated: score_spinner
   s_right_out_outline:
     number: 31 
     events_when_activated: score_outlane
@@ -396,7 +371,7 @@ drop_targets:
     switch: s_right_in_top_drop_target
 
 drop_target_banks:
-  single_targets_bank:
+  big_reds:
     drop_targets: left, left_out_top, left_in_top, right_out_top, right_in_top
     reset_coils: c_left_targets, c_right_targets
     reset_on_complete: 1s
@@ -423,18 +398,19 @@ autofire_coils:
         switch: s_slingshot_left
 
 shows:
-    flashing:
-      - time: 0
-        lights:
-            (lights): on
-      - time: .5
-        lights:
-            (lights): off
-      - time: 1
+  flashing:
+    - time: 0
+      lights:
+          (lights): on
+    - time: .5
+      lights:
+          (lights): off
+    - time: 1
 
 score_queues:
-    score:
-        chimes: c_chime_10000, c_chime_1000, c_chime_100, c_chime_10,  None
+  score:
+    chimes: c_chime_10000, c_chime_1000, c_chime_100, c_chime_10,  None
+    delay: 100ms
 
 modes:
   - base
@@ -443,3 +419,5 @@ modes:
   - super_spinner
   - saucer_50k_collect
   - super_pops
+  - saucer_lites_double_bonus
+  - super_targets

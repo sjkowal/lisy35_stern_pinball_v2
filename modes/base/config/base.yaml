@@ -5,10 +5,6 @@ mode:
   start_events: ball_starting
   priority: 100
 
-variable_player:
-  s_adv_bounus_roll_over_active:
-    bonus: 1
-  
 queue_relay_player:
   balldevice_bd_right_saucer_ball_eject_attempt:
     post: right_saucer_feature_started
@@ -80,7 +76,7 @@ score_queue_player:
   score_slingshot:
     score: 10 
   score_thumper:
-    score: 1000
+    score: 100 * current_player.pops_multiplier
   score_advance_bonus:
     score: 1000
   score_10k:
@@ -89,28 +85,10 @@ score_queue_player:
     score: 1000
   score_100:
     score: 100
-
-
+  s_spinner_active:
+    score: 100 * current_player.spinner_multiplier
+  
 light_player:
-  "{current_player.lite_double_bonus==1}":
-    l_double_bonus_when_lit: on
-  "{current_player.lite_extra_ball==1}":
-    l_left_outlane_extra_ball: on 
-    l_right_outlane_extra_ball: on
-  "{current_player.lite_triple_bonus_collect==1}":
-    l_triple_bonus_when_list: on
-  "{current_player.saucer_feature_lite_spinner==2}":
-    l_saucer_feature_lite_spinner: on
-  "{current_player.saucer_feature_scores_50k==2}":
-    l_saucer_feature_scores_50k: on
-  "{current_player.saucer_feature_lites_double_bonus==2}":
-    l_saucer_feature_lites_double_bonus: on
-  "{current_player.saucer_feature_lites_extra_ball_lane==2}":
-    l_saucer_feature_lites_extra_ball_lane: on
-  "{current_player.saucer_feature_lites_top_center_hole==2}":
-    l_saucer_feature_lites_top_center_hole: on
-  "{current_player.spinner_multiplier==10}":
-    l_spinner_1000_when_lit: on
   "{current_player.bonus%10>=1}":
     l_bonus_10000: on
   "{current_player.bonus%10>=2}":

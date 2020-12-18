@@ -3,7 +3,6 @@
 
 mode:
   start_events: mode_base_started
-  # stop_events: mode_base_stopped
   priority: 1000
 
 variable_player:
@@ -31,4 +30,5 @@ counters:
 light_player:
   "{current_player.spinner_multiplier==10}":
     l_saucer_feature_lite_spinner: on
+    l_spinner_1000_when_lit: on
 

@@ -1,0 +1,24 @@
+#config_version=5
+##! mode: saucer_lites_double_bonus 
+
+mode:
+   start_events: saucer_lites_double_bonus_lit
+   stop_events: end_saucer_lites_double_bonus
+   priority: 520
+
+event_player:
+   right_saucer_feature_ended:
+     - double_bonus_enabled
+
+show_player:
+   mode_saucer_lites_double_bonus_started:
+       flashing:
+           show_tokens:
+               lights: l_saucer_feature_lites_double_bonus
+           key: saucer_feature_lites_double_bonusShow
+           action: play
+           priority: 100
+           speed: 5 
+           events_when_stopped: end_saucer_lites_double_bonus
+   double_bonus_enabled:
+       saucer_feature_lites_double_bonusShow: stop
