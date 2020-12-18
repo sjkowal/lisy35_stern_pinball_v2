@@ -22,17 +22,7 @@ variable_player:
     bonus: 1 
   drop_target_hit:
     bonus_collect_count: 1
-  # drop_target_left_down:
-  #   bonus_collect_count: 1
-  # drop_target_left_out_top_down:
-  #   bonus_collect_count: 1
-  # drop_target_left_in_top_down:
-  #   bonus_collect_count: 1
-  # drop_target_right_out_top_down:
-  #   bonus_collect_count: 1
-  # drop_target_right_in_top_down:
-  #   bonus_collect_count: 1
-
+  
 event_player:
   s_adv_bonus_roll_over_active:
     - bonus_advances 

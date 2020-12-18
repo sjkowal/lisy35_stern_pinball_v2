@@ -14,11 +14,7 @@ variable_player:
     spinner_multiplier:
       int: 10
       action: set
-  s_spinner_active:
-    score: 100 * current_player.spinner_multiplier
-  s_spinner_inactive:
-    score: 100 * current_player.spinner_multiplier
-
+  
 counters:
   super_spinner:
     count_events: s_spinner_active,s_spinner_inactive
