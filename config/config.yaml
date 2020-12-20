@@ -290,10 +290,8 @@ switches:
     number: 30 
   s_right_out_outline:
     number: 31 
-    events_when_activated: score_outlane
   s_left_out_outline:
     number: 32
-    events_when_activated: score_outlane
   s_slingshot_right:
     number: 36
     events_when_activated: score_slingshot
@@ -405,68 +403,131 @@ shows:
       lights:
           (lights): off
     - time: 1
-  melody_endball:
+  melody_stars:
+    - time: 0
+      coils:
+        c_chime_100: pulse
+    - time: 1
+      coils:
+        c_chime_10: pulse
+    - time: 2
+      coils:
+        c_chime_100: pulse
     - time: 3
       coils:
-        c_chime_1000: pulse
+        c_chime_10000: pulse
     - time: 4
       coils:
-        c_chime_100: pulse
+        c_chime_1000: pulse
     - time: 5
       coils:
-        c_chime_10: pulse
-    - time: 7
-      coils:
-        c_chime_10: pulse
-    - time: 8
-      coils:
         c_chime_100: pulse
-    - time: 9
+    - time: 6
+      coils:
+        c_chime_10: pulse
+
+  melody_endball:
+    - time: 0
+      coils:
+        c_chime_10000: pulse
+    - time: 1
       coils:
         c_chime_1000: pulse
+    - time: 2
+      coils:
+        c_chime_100: pulse
+    - time: 3
+      coils:
+        c_chime_10: pulse
+
+    - time: 5
+      coils:
+        c_chime_100: pulse
+    - time: 6
+      coils:
+        c_chime_1000: pulse
+    - time: 7
+      coils:
+        c_chime_10000: pulse
+
   melody_startball:
     - time: 0
       coils:
         c_chime_1000: pulse
+
     - time: 2
       coils:
         c_chime_1000: pulse
     - time: 3
       coils:
         c_chime_1000: pulse
-    - time: 5
+    - time: 4
       coils:
         c_chime_1000: pulse
+
     - time: 6
       coils:
-        c_chime_100: pulse
+        c_chime_1000: pulse
     - time: 7
       coils:
         c_chime_1000: pulse
     - time: 8
       coils:
         c_chime_100: pulse
+
     - time: 10
       coils:
-        c_chime_100: pulse
+        c_chime_1000: pulse
     - time: 11
       coils:
-        c_chime_100: pulse
+        c_chime_1000: pulse
     - time: 12
       coils:
-        c_chime_10: pulse
-    - time: 13
-      coils:
-        c_chime_100: pulse
+        c_chime_1000: pulse
+
+
     - time: 14
       coils:
         c_chime_100: pulse
 
+    - time: 16
+      coils:
+        c_chime_100: pulse
+    - time: 17
+      coils:
+        c_chime_100: pulse
+    - time: 18
+      coils:
+        c_chime_100: pulse
+
+    - time: 20
+      coils:
+        c_chime_100: pulse
+    - time: 21
+      coils:
+        c_chime_100: pulse
+    - time: 22
+      coils:
+        c_chime_10: pulse
+
+    - time: 24
+      coils:
+        c_chime_100: pulse
+    - time: 25
+      coils:
+        c_chime_100: pulse
+    - time: 26
+      coils:
+        c_chime_100: pulse
+
+
+
+   
 
 score_queues:
   score:
     chimes: c_chime_10000, c_chime_1000, c_chime_100, c_chime_10,  None
-    delay: 100ms
+    delay: 1ms
 
 modes:
   - base
