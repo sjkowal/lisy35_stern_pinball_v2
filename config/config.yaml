@@ -8,7 +8,7 @@ hardware:
 lisy:
   connection: network
   network_port: 5963
-  poll_hz: 50
+  poll_hz: 100
   network_host: "192.168.7.60"
 
 player_vars:
@@ -136,11 +136,11 @@ ball_devices:
   bd_right_saucer:
     ball_switches: s_right_saucer
     eject_coil: c_right_saucer
-    eject_timeouts: 2s
+    eject_timeouts: 3s
   bd_top_saucer:
     ball_switches: s_top_saucer
     eject_coil: c_top_saucer
-    eject_timeouts: 2s
+    eject_timeouts: 3s
 
 
 playfields:
@@ -311,22 +311,25 @@ switches:
 coils:
   c_chime_10:
     number: 1
+    default_pulse_ms: 25
   c_thumper_left:
     number: 11
     default_pulse_ms: 20
   c_chime_100:
     number: 2
+    default_pulse_ms: 25
   c_thumper_right:
     number: 12 
     default_pulse_ms: 20
   c_chime_1000:
     number: 3
+    default_pulse_ms: 25
   c_thumper_center:
     number: 13 
     default_pulse_ms: 20
   c_chime_10000:
     number: 4
-    default_pulse_ms: 20
+    default_pulse_ms: 25
   c_outhole:
     number: 7
     default_pulse_ms: 30
@@ -403,7 +406,8 @@ shows:
       lights:
           (lights): off
     - time: 1
-  melody_stars:
+
+  melody_stars_startgame:
     - time: 0
       coils:
         c_chime_100: pulse
@@ -426,7 +430,7 @@ shows:
       coils:
         c_chime_10: pulse
 
-  melody_endball:
+  melody_pinball_endgame:
     - time: 0
       coils:
         c_chime_10000: pulse
@@ -450,7 +454,7 @@ shows:
       coils:
         c_chime_10000: pulse
 
-  melody_startball:
+  melody_pinball_startgame:
     - time: 0
       coils:
         c_chime_1000: pulse
@@ -520,14 +524,27 @@ shows:
       coils:
         c_chime_100: pulse
 
+show_player:
+  player_starting{current_player.ball==1}:
+    melody_pinball_startgame:
+      action: play
+      speed: 8
+      loops: 0
+      sync_ms: 1000
+      block_queue: true
 
-
-   
+  player_ending{current_player.ball==3}:
+    melody_pinball_endgame:
+      action: play
+      speed: 8
+      loops: 0
+      sync_ms: 1000
+      block_queue: true
 
 score_queues:
   score:
     chimes: c_chime_10000, c_chime_1000, c_chime_100, c_chime_10,  None
-    delay: 1ms
+    delay: 100ms
 
 modes:
   - base

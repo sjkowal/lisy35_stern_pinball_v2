@@ -1,5 +1,5 @@
 #config_version=5
-## !mode: bonus
+## !mode: bonus_countdown
 
 mode:
   start_events: ball_will_end

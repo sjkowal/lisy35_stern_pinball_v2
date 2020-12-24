@@ -13,13 +13,18 @@ queue_relay_player:
     post: top_saucer_feature_started
     wait_for: top_saucer_feature_ended
 
+queue_event_player:
+  right_saucer_feature_end:
+    queue_event: right_saucer_feature_ending
+    events_when_finished: right_saucer_feature_ended
+
 event_player:
   right_saucer_feature_started: 
     - start_right_saucer_score_5k
   timer_right_saucer_score_5k_tick:
     - score_100
   timer_right_saucer_score_5k_complete:
-    - right_saucer_feature_ended
+    - right_saucer_feature_end
 
   top_saucer_feature_started:
     - start_top_saucer_score_5k
@@ -55,16 +60,16 @@ score_queue_player:
     score: 100 
   s_left_inner_outline_active:
     score: 100 
-  # s_left_center_drop_target_active:
-  #   score: 1000
-  # s_left_out_top_drop_target_active:
-  #   score: 1000 
-  # s_left_in_top_drop_target_active:
-  #   score: 1000 
-  # s_right_in_top_drop_target_active:
-  #   score: 1000 
-  # s_right_out_top_drop_target_active:
-  #   score: 1000 
+  s_left_center_drop_target_active:
+    score: 10
+  s_left_out_top_drop_target_active:
+    score: 10 
+  s_left_in_top_drop_target_active:
+    score: 10 
+  s_right_in_top_drop_target_active:
+    score: 10 
+  s_right_out_top_drop_target_active:
+    score: 10 
   score_spinner:
     score: 100 * current_player.spinner_multiplier
   score_saucer:
@@ -109,13 +114,3 @@ light_player:
     l_bonus_90000: on
   "{current_player.bonus>=10}":
     l_bonus_100000: on
-
-show_player:
-  ball_started:
-    melody_startball:
-      action: play
-      speed: 8
-      loops: 0
-      sync_ms: 1000
-
-

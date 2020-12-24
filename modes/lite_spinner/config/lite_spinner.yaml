@@ -9,7 +9,7 @@ mode:
    priority: 500
 
 event_player:
-   right_saucer_feature_ended:
+   right_saucer_feature_ending:
      - super_spinner_enabled
 
 show_player:
@@ -20,6 +20,6 @@ show_player:
            key: saucer_feature_lite_spinnerShow
            action: play
            priority: 100
-           speed: 5
+           speed: 3
    super_spinner_enabled:
        saucer_feature_lite_spinnerShow: stop
