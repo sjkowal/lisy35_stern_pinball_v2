@@ -4,11 +4,13 @@
 
 mode:
    start_events: super_spinner_collect_lit 
+   stop_events: saucer_feature_lite_spinner_collect_ended
    priority: 550
 
 event_player:
    right_saucer_feature_ending.5:
      - super_spinner_enabled
+     - saucer_feature_lite_spinner_collect_ended
 
 show_player:
    mode_lite_spinner_started:

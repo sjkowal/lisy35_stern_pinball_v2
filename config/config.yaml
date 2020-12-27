@@ -78,19 +78,20 @@ segment_display_player:
   game_ended{machine.player4_score > 0}:
     display4:
       text: "{machine.player4_score:d}"
-      
-  player_score.1{change>0}:
-    display1:
-      action: no_flash
-  player_score.2{change>0}:
-    display2:
-      action: no_flash
-  player_score.3{change>0}:
-    display3:
-      action: no_flash
-  player_score.4{change>0}:
-    display4:
-      action: no_flash
+
+  # This is bad! Causes major slowdown with MPF...I'd like to know why
+  # player_score.1{change>0}:
+  #   display1:
+  #     action: no_flash
+  # player_score.2{change>0}:
+  #   display2:
+  #     action: no_flash
+  # player_score.3{change>0}:
+  #   display3:
+  #     action: no_flash
+  # player_score.4{change>0}:
+  #   display4:
+  #     action: no_flash
 
 digital_outputs:
     flipper_enabling_relay:

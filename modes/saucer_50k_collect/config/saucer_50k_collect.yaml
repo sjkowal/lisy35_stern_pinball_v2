@@ -3,7 +3,7 @@
 
 mode:
    start_events: saucer_50k_collect_lit
-  #  stop_events: saucer_feature_50k_collect_ended
+   stop_events: saucer_feature_50k_collect_ended
    priority: 540
 
 event_player:

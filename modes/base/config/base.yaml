@@ -14,6 +14,9 @@ queue_relay_player:
     wait_for: top_saucer_feature_ended
 
 queue_event_player:
+  # Signal all the running saucer feature modes that they can be collected.  
+  # All collectable features will be queued and collected in priority order. 
+  # This allows one shot to the saucer to collect multiple features. 
   right_saucer_feature_end:
     queue_event: right_saucer_feature_ending
     events_when_finished: right_saucer_feature_ended

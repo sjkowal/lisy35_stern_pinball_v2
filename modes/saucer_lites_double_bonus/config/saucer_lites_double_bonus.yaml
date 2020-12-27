@@ -3,12 +3,14 @@
 
 mode:
    start_events: saucer_lites_double_bonus_lit
-#    stop_events: saucer_feature_lites_double_bonus_ended
+   stop_events: saucer_feature_lites_double_bonus_collect_ended
    priority: 530
 
 event_player:
-    saucer_feature_lites_double_bonus_started:
+    # saucer_feature_lites_double_bonus_started:
+    saucer_feature_lites_double_bonus_ended:
         - double_bonus_enabled
+        - saucer_feature_lites_double_bonus_collect_ended
 
 queue_event_player:
   saucer_feature_lites_double_bonus_started:
