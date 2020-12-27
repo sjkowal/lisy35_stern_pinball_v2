@@ -79,44 +79,6 @@ segment_display_player:
     display4:
       text: "{machine.player4_score:d}"
 
-#flash display on player turn
-  # player_turn_started.1{number==1}:
-  #   display1:
-  #     action: flash
-  # player_score_changed.1{player_num==1}:
-  #   display1:
-  #     action: no_flash
-  # player_turn_ended.1{number==1}:
-  #   display1:
-  #     action: no_flash
-  # player_turn_started.2{number==2}:
-  #   display2:
-  #     action: flash
-  # player_score_changed.2{player_num==2}:
-  #   display2:
-  #     action: no_flash
-  # player_turn_ended.2{number==2}:
-  #   display2:
-  #     action: no_flash
-  # player_turn_started.3{number==3}:
-  #   display3:
-  #     action: flash
-  # player_score_changed.3{player_num==3}:
-  #   display3:
-  #     action: no_flash
-  # player_turn_ended.3{number==3}:
-  #   display3:
-  #     action: no_flash
-  # player_turn_started.4{number==4}:
-  #   display4:
-  #     action: flash
-  # player_score_changed.4{player_num==4}:
-  #   display4:
-  #     action: no_flash
-  # player_turn_ended.4{number==4}:
-  #   display4:
-  #     action: no_flash
-
 digital_outputs:
     flipper_enabling_relay:
         type: driver
@@ -525,7 +487,6 @@ shows:
         c_chime_100: pulse
 
 show_player:
-  # ball_starting{current_player.ball==1}:
   player_adding:
     melody_pinball_startgame:
       action: play
@@ -535,7 +496,6 @@ show_player:
       block_queue: true
 
   game_ending:
-  # ball_ending{current_player.ball==3}:
     melody_pinball_endgame:
       action: play
       speed: 10
