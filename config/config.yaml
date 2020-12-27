@@ -525,18 +525,20 @@ shows:
         c_chime_100: pulse
 
 show_player:
-  player_starting{current_player.ball==1}:
+  # ball_starting{current_player.ball==1}:
+  player_adding:
     melody_pinball_startgame:
       action: play
-      speed: 8
+      speed: 10
       loops: 0
       sync_ms: 1000
       block_queue: true
 
-  player_ending{current_player.ball==3}:
+  game_ending:
+  # ball_ending{current_player.ball==3}:
     melody_pinball_endgame:
       action: play
-      speed: 8
+      speed: 10
       loops: 0
       sync_ms: 1000
       block_queue: true
