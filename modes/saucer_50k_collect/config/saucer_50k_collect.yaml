@@ -6,29 +6,16 @@ mode:
    priority: 510
 
 event_player:
-  #  right_saucer_feature_ended:
-  #   - super_pops_enabled
-   timer_score_50k_tick:
+  timer_score_50k_tick:
     - score_10k
-   timer_score_50k_complete:
+  timer_score_50k_complete:
     - super_pops_enabled
     - saucer_feature_50k_collect_ended
-
-
-# queue_event_player:
-#   right_saucer_feature_ending:
-#     queue_event: resolve_50k_bonus
-#     events_when_finished: super_pops_enabled
 
 queue_relay_player:
   right_saucer_feature_ending:
     post: saucer_feature_50k_collect_started
     wait_for: saucer_feature_50k_collect_ended
-
-# queue_relay_player:
-#    resolve_50k_bonus:
-#      post: saucer_feature_50k_collect_started
-#      wait_for: saucer_feature_50k_collect_ended
 
 show_player:
    mode_saucer_50k_collect_started:

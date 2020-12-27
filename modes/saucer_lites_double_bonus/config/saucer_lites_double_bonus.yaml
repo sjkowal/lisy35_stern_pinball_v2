@@ -6,10 +6,6 @@ mode:
    stop_events: end_saucer_lites_double_bonus
    priority: 520
 
-# event_player:
-#    right_saucer_feature_ended:
-#      - double_bonus_enabled
-
 event_player:
     saucer_feature_50k_collect_started:
         - double_bonus_enabled

@@ -4,8 +4,6 @@
 
 mode:
    start_events: super_spinner_collect_lit 
-#  stop_events: right_saucer_feature_ended ball_ended
-#   events_when_stopped: super_spinner_enabled
    priority: 500
 
 event_player:
