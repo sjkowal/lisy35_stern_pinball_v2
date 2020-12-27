@@ -15,40 +15,16 @@ lisy:
   #network_host: "192.168.7.60"
 
 player_vars:
-  multiplier:
-    value_type: int
-    initial_value: 1
   bonus:
     value_type: int
     initial_value: 0
-  lite_double_bonus:
+  bonus_collect_count:
     value_type: int
     initial_value: 0
-  lite_extra_ball:
-    value_type: int
-    initial_value: 0
-  lite_triple_bonus_collect:
-    value_type: int
-    initial_value: 0
-  saucer_feature_is_enabled:
+  bonus_multiplier:
     value_type: int
     initial_value: 1
-  saucer_feature_lite_spinner:
-    value_type: int
-    initial_value: 0
-  saucer_feature_scores_50k:
-    value_type: int
-    initial_value: 0
-  saucer_feature_lites_double_bonus:
-    value_type: int
-    initial_value: 0
-  saucer_feature_lites_extra_ball:
-    value_type: int
-    initial_value: 0
-  saucer_feature_lites_top_center_hole:
-    value_type: int
-    initial_value: 0
-
+  
 segment_displays:
     display0:
       number: 0
@@ -116,33 +92,6 @@ segment_display_player:
     display4:
       action: no_flash
 
-
-#flash display on player turn
-  player_turn_started.1{number==1}:
-    display1:
-      action: flash
-  player_turn_ended.3{number==1}:
-    display1:
-      action: no_flash
-  player_turn_started.4{number==2}:
-    display2:
-      action: flash
-  player_turn_ended.6{number==2}:
-    display2:
-      action: no_flash
-  player_turn_started.7{number==3}:
-    display3:
-      action: flash
-  player_turn_ended.9{number==3}:
-    display3:
-      action: no_flash
-  player_turn_started.10{number==4}:
-    display4:
-      action: flash
-  player_turn_ended.12{number==4}:
-    display4:
-      action: no_flash
-  
 digital_outputs:
     flipper_enabling_relay:
         type: driver
@@ -173,7 +122,7 @@ playfields:
   playfield:
     default_source_device: bd_drain
     tags: default
-    enable_ball_search: True
+    # enable_ball_search: True
 
 lights:
   l_saucer_feature_lite_spinner:
@@ -286,9 +235,8 @@ switches:
     number: 12
   s_top_saucer:
     number: 13
-  s_adv_bounus_roll_over:
+  s_adv_bonus_roll_over:
     number: 14
-    events_when_activated: score_advance_bonus
   s_slam:
     number: 16
   s_10_points:
@@ -315,13 +263,10 @@ switches:
     number: 29
   s_spinner:
     number: 30 
-    events_when_activated: score_spinner
   s_right_out_outline:
     number: 31 
-    events_when_activated: score_outlane
   s_left_out_outline:
     number: 32
-    events_when_activated: score_outlane
   s_slingshot_right:
     number: 36
     events_when_activated: score_slingshot
@@ -341,22 +286,25 @@ switches:
 coils:
   c_chime_10:
     number: 1
+    default_pulse_ms: 25
   c_thumper_left:
     number: 11
     default_pulse_ms: 20
   c_chime_100:
     number: 2
+    default_pulse_ms: 25
   c_thumper_right:
     number: 12 
     default_pulse_ms: 20
   c_chime_1000:
     number: 3
+    default_pulse_ms: 25
   c_thumper_center:
     number: 13 
     default_pulse_ms: 20
   c_chime_10000:
     number: 4
-    default_pulse_ms: 20
+    default_pulse_ms: 25
   c_outhole:
     number: 7
     default_pulse_ms: 30
@@ -398,7 +346,7 @@ drop_targets:
     switch: s_right_in_top_drop_target
 
 drop_target_banks:
-  single_targets_bank:
+  big_reds:
     drop_targets: left, left_out_top, left_in_top, right_out_top, right_in_top
     reset_coils: c_left_targets, c_right_targets
     reset_on_complete: 1s
@@ -418,27 +366,167 @@ autofire_coils:
         coil: c_thumper_center
         switch: s_thumper_center
     ac_slingshot_right:
-        coil: c_thumper_right
+        coil: c_slingshot_right
         switch: s_slingshot_right
     ac_slingshot_leftscore:
         coil: c_slingshot_left
         switch: s_slingshot_left
 
 shows:
-    flashing:
-      - time: 0
-        lights:
-            (lights): on
-      - time: .5
-        lights:
-            (lights): off
-      - time: 1
+  flashing:
+    - time: 0
+      lights:
+          (lights): on
+    - time: .5
+      lights:
+          (lights): off
+    - time: 1
+
+  melody_stars_startgame:
+    - time: 0
+      coils:
+        c_chime_100: pulse
+    - time: 1
+      coils:
+        c_chime_10: pulse
+    - time: 2
+      coils:
+        c_chime_100: pulse
+    - time: 3
+      coils:
+        c_chime_10000: pulse
+    - time: 4
+      coils:
+        c_chime_1000: pulse
+    - time: 5
+      coils:
+        c_chime_100: pulse
+    - time: 6
+      coils:
+        c_chime_10: pulse
+
+  melody_pinball_endgame:
+    - time: 0
+      coils:
+        c_chime_10000: pulse
+    - time: 1
+      coils:
+        c_chime_1000: pulse
+    - time: 2
+      coils:
+        c_chime_100: pulse
+    - time: 3
+      coils:
+        c_chime_10: pulse
+
+    - time: 5
+      coils:
+        c_chime_100: pulse
+    - time: 6
+      coils:
+        c_chime_1000: pulse
+    - time: 7
+      coils:
+        c_chime_10000: pulse
+
+  melody_pinball_startgame:
+    - time: 0
+      coils:
+        c_chime_1000: pulse
+
+    - time: 2
+      coils:
+        c_chime_1000: pulse
+    - time: 3
+      coils:
+        c_chime_1000: pulse
+    - time: 4
+      coils:
+        c_chime_1000: pulse
+
+    - time: 6
+      coils:
+        c_chime_1000: pulse
+    - time: 7
+      coils:
+        c_chime_1000: pulse
+    - time: 8
+      coils:
+        c_chime_100: pulse
+
+    - time: 10
+      coils:
+        c_chime_1000: pulse
+    - time: 11
+      coils:
+        c_chime_1000: pulse
+    - time: 12
+      coils:
+        c_chime_1000: pulse
+
+
+    - time: 14
+      coils:
+        c_chime_100: pulse
+
+    - time: 16
+      coils:
+        c_chime_100: pulse
+    - time: 17
+      coils:
+        c_chime_100: pulse
+    - time: 18
+      coils:
+        c_chime_100: pulse
+
+    - time: 20
+      coils:
+        c_chime_100: pulse
+    - time: 21
+      coils:
+        c_chime_100: pulse
+    - time: 22
+      coils:
+        c_chime_10: pulse
+
+    - time: 24
+      coils:
+        c_chime_100: pulse
+    - time: 25
+      coils:
+        c_chime_100: pulse
+    - time: 26
+      coils:
+        c_chime_100: pulse
+
+show_player:
+  player_adding:
+    melody_pinball_startgame:
+      action: play
+      speed: 10
+      loops: 0
+      sync_ms: 1000
+      block_queue: true
+
+  game_ending:
+    melody_pinball_endgame:
+      action: play
+      speed: 10
+      loops: 0
+      sync_ms: 1000
+      block_queue: true
 
 score_queues:
-    score:
-        chimes: c_chime_10000, c_chime_1000, c_chime_100, c_chime_10,  None
+  score:
+    chimes: c_chime_10000, c_chime_1000, c_chime_100, c_chime_10,  None
+    delay: 100ms
 
 modes:
   - base
   - bonus_countdown
-
+  - lite_spinner
+  - super_spinner
+  - saucer_50k_collect
+  - super_pops
+  - saucer_lites_double_bonus
+  - super_targets

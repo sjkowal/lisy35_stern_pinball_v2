@@ -1,0 +1,30 @@
+#config_version=5
+##! mode: super_spinner 
+
+mode:
+  start_events: mode_base_started
+  priority: 1000
+
+variable_player:
+  mode_super_spinner_started:
+    spinner_multiplier:
+      int: 1
+      action: set
+  super_spinner_enabled:
+    spinner_multiplier:
+      int: 10
+      action: set
+  
+counters:
+  super_spinner:
+    count_events: s_spinner_active,s_spinner_inactive
+    starting_count: 0
+    count_complete_value: 40
+    direction: up 
+    events_when_complete: super_spinner_collect_lit
+
+light_player:
+  "{current_player.spinner_multiplier==10}":
+    l_saucer_feature_lite_spinner: on
+    l_spinner_1000_when_lit: on
+

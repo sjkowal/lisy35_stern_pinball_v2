@@ -1,9 +1,9 @@
 #config_version=5
-## !mode: bonus
+## !mode: bonus_countdown
 
 mode:
   start_events: ball_will_end
-  priority: 200
+  priority: 5000
 
 queue_relay_player:
   ball_ending:
@@ -21,7 +21,7 @@ event_player:
   bonus_countdown_started{current_player.bonus==0}:
     - mode_bonus_countdown_ended
   timer_player_bonus_tick:
-    - bonus_advances
+    - bonus_advance_score
   timer_player_bonus_complete:
     - mode_bonus_countdown_ended
 
@@ -30,33 +30,11 @@ timers:
     start_value: 1 * current_player.bonus
     end_value: 0
     direction: down
-    tick_interval: 250ms
+    tick_interval: 450ms
     control_events:
       - action: start
         event: trigger_countdown 
 
 score_queue_player:
-  bonus_advances:
-    score: 10000 * current_player.multiplier
-
-light_player:
-  "{current_player.bonus%10>=1}":
-    l_bonus_10000: on
-  "{current_player.bonus%10>=2}":
-    l_bonus_20000: on
-  "{current_player.bonus%10>=3}":
-    l_bonus_30000: on
-  "{current_player.bonus%10>=4}":
-    l_bonus_40000: on
-  "{current_player.bonus%10>=5}":
-    l_bonus_50000: on
-  "{current_player.bonus%10>=6}":
-    l_bonus_60000: on
-  "{current_player.bonus%10>=7}":
-    l_bonus_70000: on
-  "{current_player.bonus%10>=8}":
-    l_bonus_80000: on
-  "{current_player.bonus%10>=9}":
-    l_bonus_90000: on
-  "{current_player.bonus>=10}":
-    l_bonus_100000: on
+  bonus_advance_score:
+    score: 10000 * current_player.bonus_multiplier

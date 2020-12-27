@@ -1,0 +1,32 @@
+#config_version=5
+##! mode: super_pops
+
+mode:
+  start_events: mode_base_started
+  priority: 1010
+
+variable_player:
+  mode_super_pops_started:
+    pops_multiplier:
+      int: 1
+      action: set
+  super_pops_enabled:
+    pops_multiplier:
+      int: 10
+      action: set
+
+counters:
+  super_pops:
+    count_events: s_thumper_center_active,s_thumper_right_active,s_thumper_left_active
+    starting_count: 0
+    count_complete_value: 10
+    direction: up 
+    events_when_complete: saucer_50k_collect_lit 
+
+light_player:
+  "{current_player.pops_multiplier==10}":
+    l_saucer_feature_scores_50k: on
+    l_top_pop_bumpers: on
+    l_bottom_pop_bumper: on
+
+

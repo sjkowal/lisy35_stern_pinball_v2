@@ -1,0 +1,41 @@
+#config_version=5
+##! mode: saucer_50k_collect 
+
+mode:
+   start_events: saucer_50k_collect_lit
+   priority: 510
+
+event_player:
+  timer_score_50k_tick:
+    - score_10k
+  timer_score_50k_complete:
+    - super_pops_enabled
+    - saucer_feature_50k_collect_ended
+
+queue_relay_player:
+  right_saucer_feature_ending:
+    post: saucer_feature_50k_collect_started
+    wait_for: saucer_feature_50k_collect_ended
+
+show_player:
+   mode_saucer_50k_collect_started:
+       flashing:
+           show_tokens:
+               lights: l_saucer_feature_scores_50k
+           key: saucer_feature_50k_collectShow
+           action: play
+           priority: 100
+           speed: 3 
+   super_pops_enabled:
+       saucer_feature_50k_collectShow: stop
+
+timers:
+  score_50k:
+    start_value: 5 
+    end_value: 0
+    direction: down
+    tick_interval: 200ms
+    control_events:
+      - action: restart
+        event: saucer_feature_50k_collect_started
+
