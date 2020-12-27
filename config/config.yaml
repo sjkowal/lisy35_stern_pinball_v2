@@ -79,7 +79,7 @@ segment_display_player:
     display4:
       text: "{machine.player4_score:d}"
 
-  # This is bad! Causes major slowdown with MPF...I'd like to know why
+  # The following causes major slowdown with MPF, but I'm not sure why.
   # player_score.1{change>0}:
   #   display1:
   #     action: no_flash
@@ -531,3 +531,7 @@ modes:
   - super_pops
   - saucer_lites_double_bonus
   - super_targets
+  - saucer_lites_extra_ball_lane
+  - super_feature_extra_ball
+  - saucer_lites_top_center_hole
+  - super_feature_triple_bonus
