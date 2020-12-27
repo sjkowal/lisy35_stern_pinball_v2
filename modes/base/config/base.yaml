@@ -4,7 +4,7 @@
 mode:
   start_events: ball_starting
   priority: 100
-
+  
 queue_relay_player:
   balldevice_bd_right_saucer_ball_eject_attempt:
     post: right_saucer_feature_started

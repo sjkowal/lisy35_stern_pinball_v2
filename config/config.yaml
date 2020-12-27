@@ -8,8 +8,11 @@ hardware:
 lisy:
   connection: network
   network_port: 5963
-  poll_hz: 100
+  poll_hz: 100 
+  # PI3 
   network_host: "192.168.7.60"
+  # PIZero
+  #network_host: "192.168.7.60"
 
 player_vars:
   bonus:
@@ -48,7 +51,7 @@ segment_display_player:
     display4:
       text: " "
 
-# show score when adding players
+  # show score when adding players
   player_added.1{num==1}:
     display1:
       text: "{players[0].score:d}"
@@ -63,9 +66,6 @@ segment_display_player:
       text: "{players[3].score:d}"
 
 # clear only display0 after game
-  game_ended:
-    display0:
-      text: ""
   game_ended{machine.player1_score > 0}:
     display1:
       text: "{machine.player1_score:d}"
@@ -78,6 +78,19 @@ segment_display_player:
   game_ended{machine.player4_score > 0}:
     display4:
       text: "{machine.player4_score:d}"
+      
+  player_score.1{change>0}:
+    display1:
+      action: no_flash
+  player_score.2{change>0}:
+    display2:
+      action: no_flash
+  player_score.3{change>0}:
+    display3:
+      action: no_flash
+  player_score.4{change>0}:
+    display4:
+      action: no_flash
 
 digital_outputs:
     flipper_enabling_relay:
