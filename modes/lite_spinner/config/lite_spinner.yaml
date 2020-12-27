@@ -4,10 +4,10 @@
 
 mode:
    start_events: super_spinner_collect_lit 
-   priority: 500
+   priority: 550
 
 event_player:
-   right_saucer_feature_ending:
+   right_saucer_feature_ending.5:
      - super_spinner_enabled
 
 show_player:
@@ -19,5 +19,5 @@ show_player:
            action: play
            priority: 100
            speed: 3
-   super_spinner_enabled:
+   right_saucer_feature_ending.5:
        saucer_feature_lite_spinnerShow: stop

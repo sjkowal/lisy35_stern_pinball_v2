@@ -3,22 +3,22 @@
 
 mode:
    start_events: saucer_lites_double_bonus_lit
-   stop_events: end_saucer_lites_double_bonus
-   priority: 520
+#    stop_events: saucer_feature_lites_double_bonus_ended
+   priority: 530
 
 event_player:
-    saucer_feature_50k_collect_started:
+    saucer_feature_lites_double_bonus_started:
         - double_bonus_enabled
 
 queue_event_player:
-  saucer_feature_50k_collect_started:
+  saucer_feature_lites_double_bonus_started:
     queue_event: resolve_double_bonus
-    events_when_finished: saucer_feature_50k_collect_ended
+    events_when_finished: saucer_feature_lites_double_bonus_ended
 
 queue_relay_player:
-  right_saucer_feature_ending:
-    post: saucer_feature_50k_collect_started
-    wait_for: saucer_feature_50k_collect_ended
+  right_saucer_feature_ending.3:
+    post: saucer_feature_lites_double_bonus_started
+    wait_for: saucer_feature_lites_double_bonus_ended
 
 show_player:
     mode_saucer_lites_double_bonus_started:
@@ -33,7 +33,7 @@ show_player:
     resolve_double_bonus.1:
         saucer_feature_lites_double_bonusShow: stop
 
-    resolve_double_bonus.2:
+    resolve_double_bonus.100:
         melody_stars_startgame:
             action: play
             speed: 9
