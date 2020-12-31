@@ -13,4 +13,4 @@ Accumulate spinner spins to enable super spinners.  When you qualified the Lite 
 # Issues
 * (feature) bonus should go beyond 100k(?)
 * (feature) Rollovers should score 10 & ring the 10k chime when advancing bonus
-* (feature) Enable lite tripple bonus collect
+* (feature) Enable lite triple bonus collect

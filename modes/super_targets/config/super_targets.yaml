@@ -52,7 +52,7 @@ accruals:
       - drop_target_right_in_top_down
     events_when_complete: saucer_lites_double_bonus_lit
     events_when_hit: drop_target_hit
-  super_targets_tripple_bonus:
+  super_targets_triple_bonus:
     events:
       - drop_target_left_down
       - drop_target_left_out_top_down
@@ -60,5 +60,5 @@ accruals:
       - drop_target_right_out_top_down
       - drop_target_right_in_top_down
     enable_events: saucer_lites_double_bonus_lit
-    events_when_complete: saucer_lites_tripple_bonus_lit
+    events_when_complete: saucer_lites_triple_bonus_lit
     events_when_hit: drop_target_hit

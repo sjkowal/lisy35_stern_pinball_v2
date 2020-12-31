@@ -9,6 +9,7 @@ mode:
 
 event_player:
    right_saucer_feature_ending.5:
+     - saucer_feature_lite_spinner_collected
      - super_spinner_enabled
      - saucer_feature_lite_spinner_collect_ended
 

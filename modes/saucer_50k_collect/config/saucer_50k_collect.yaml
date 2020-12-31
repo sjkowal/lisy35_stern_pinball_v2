@@ -10,6 +10,7 @@ event_player:
   timer_score_50k_tick:
     - score_10k
   timer_score_50k_complete:
+    - saucer_feature_50k_collected
     - super_pops_enabled
     - saucer_feature_50k_collect_ended
 

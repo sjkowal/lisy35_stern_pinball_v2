@@ -1,0 +1,28 @@
+#config_version=5
+##! mode: super_feature_triple_bonus 
+
+mode:
+  start_events: mode_base_started
+  priority: 1040
+
+variable_player:
+  triple_bonus_enabled:
+    bonus_multiplier: 
+      int: 3
+      action: set
+
+event_player:
+  top_center_hole_enabled:
+    - saucer_lites_triple_bonus_lit
+  mode_super_feature_triple_bonus_started:
+    - top_center_hole_disabled
+  saucer_feature_lites_extra_ball_lane_collected:
+    - saucer_lites_top_center_hole_lit
+light_player:
+  saucer_lites_triple_bonus_lit:
+    l_lites_triple_bonus_when_lit: on
+  top_center_hole_disabled:
+    l_lites_triple_bonus_when_lit: off
+  "{current_player.bonus_multiplier==3}":
+    l_triple_bonus_when_lit: on
+

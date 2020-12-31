@@ -9,6 +9,7 @@ mode:
 event_player:
     # saucer_feature_lites_double_bonus_started:
     saucer_feature_lites_double_bonus_ended:
+        - saucer_feature_lite_double_bonus_collected
         - double_bonus_enabled
         - saucer_feature_lites_double_bonus_collect_ended
 

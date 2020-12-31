@@ -1,2 +1,25 @@
 #config_version=5
 ##! mode: saucer_lites_extra_ball_lane 
+
+mode:
+   start_events: saucer_lites_extra_ball_lane_lit
+   stop_events: saucer_lites_extra_ball_lane_collect_ended
+   priority: 520
+
+event_player:
+   right_saucer_feature_ending.2:
+     - saucer_feature_lites_extra_ball_lane_collected
+     - extra_ball_lane_enabled
+     - saucer_lites_extra_ball_lane_collect_ended
+
+show_player:
+   mode_saucer_lites_extra_ball_lane_started:
+       flashing:
+           show_tokens:
+               lights: l_saucer_feature_lites_extra_ball_lane
+           key: saucer_feature_lites_extra_ball_laneShow
+           action: play
+           priority: 100
+           speed: 3
+   right_saucer_feature_ending.2:
+       saucer_feature_lites_extra_ball_laneShow: stop

@@ -24,6 +24,13 @@ player_vars:
   bonus_multiplier:
     value_type: int
     initial_value: 1
+  # extra_ball_collect_count:
+  #   value_type: int
+  #   initial_value: 1
+  # Settings
+  setting_extra_ball: #if 0 then 100k scored for extra ball, if 1 then an extra ball awarded
+    value_type: int
+    initial_value: 0
   
 segment_displays:
     display0:
@@ -136,7 +143,7 @@ lights:
     number: 53
   l_saucer_feature_lites_top_center_hole:
     number: 9  
-  l_lites_triple_bonus_when_list:
+  l_lites_triple_bonus_when_lit:
     number: 26 
   l_lites_special_lane:
     number: 35 
@@ -202,11 +209,11 @@ lights:
   l_bonus_80000:
     number: 46
     tags: bonus
-  l_left_outlane_special_when_list:
+  l_left_outlane_special_when_lit:
     number: 48 
-  l_right_outlane_special_when_list:
+  l_right_outlane_special_when_lit:
     number: 49
-  l_triple_bonus_when_list:
+  l_triple_bonus_when_lit:
     number: 56
   l_tilt:
     number: 57
@@ -214,6 +221,8 @@ lights:
     number: 58
   l_bb_four_up:
     number: 59
+  l_shoot_again:
+    number: 10
 
 
 switches:
@@ -535,3 +544,4 @@ modes:
   - super_feature_extra_ball
   - saucer_lites_top_center_hole
   - super_feature_triple_bonus
+  - saucer_lites_triple_bonus

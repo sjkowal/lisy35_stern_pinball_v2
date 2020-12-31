@@ -3,6 +3,7 @@
 
 - duration: 1
   lights:
+    l_shoot_again: 00
     l_advance_bonus: 00 
     l_spinner_1000_when_lit: 00 
     l_left_outlane_extra_ball: 00 
@@ -10,12 +11,13 @@
     l_top_pop_bumpers: ff
     l_bottom_pop_bumper: ff
     l_double_bonus_when_lit: ff
-    l_left_outlane_special_when_list: ff
-    l_right_outlane_special_when_list: ff
-    l_triple_bonus_when_list: ff
+    l_left_outlane_special_when_lit: ff
+    l_right_outlane_special_when_lit: ff
+    l_triple_bonus_when_lit: ff
   
 - duration: 1
   lights:
+    l_shoot_again: ff
     l_advance_bonus: ff
     l_spinner_1000_when_lit: ff
     l_left_outlane_extra_ball: ff 
@@ -23,6 +25,6 @@
     l_top_pop_bumpers: 00 
     l_bottom_pop_bumper: 00  
     l_double_bonus_when_lit: 00 
-    l_left_outlane_special_when_list: 00 
-    l_right_outlane_special_when_list: 00 
-    l_triple_bonus_when_list: 00 
+    l_left_outlane_special_when_lit: 00 
+    l_right_outlane_special_when_lit: 00 
+    l_triple_bonus_when_lit: 00 
