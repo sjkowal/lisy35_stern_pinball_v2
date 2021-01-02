@@ -31,7 +31,7 @@ show_player:
            action: play
            priority: 100
            speed: 3 
-   saucer_feature_50k_collect_started:
+   saucer_feature_50k_collect_ended:
        saucer_feature_50k_collectShow: stop
 
 timers:

@@ -8,22 +8,37 @@ hardware:
 lisy:
   connection: network
   network_port: 5963
-  poll_hz: 100 
+  poll_hz: 70 
   # PI3 
   network_host: "192.168.7.60"
   # PIZero
   #network_host: "192.168.7.60"
 
+settings:
+  extra_ball_award:
+    label: The award given to a player when an extra ball is collected
+    values:
+      0: "nothing awarded"
+      1: "extra ball awarded"
+      2: "50,000 points awarded"
+      3: "100,000 points awarded"
+    default: 2
+    key_type: int
+    sort: 600
+
 player_vars:
   bonus:
     value_type: int
-    initial_value: 0
+    initial_value: 1
   bonus_collect_count:
     value_type: int
     initial_value: 0
   bonus_multiplier:
     value_type: int
     initial_value: 1
+  special_collect_count:
+    value_type: int
+    initial_value: 0
   # extra_ball_collect_count:
   #   value_type: int
   #   initial_value: 1

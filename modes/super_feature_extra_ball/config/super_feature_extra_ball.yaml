@@ -13,18 +13,15 @@ variable_player:
       action: set
   extra_ball_lane_enabled:
     extra_ball_collect_count: 1
-  extra_ball_advances.10:
+  extra_ball_collected:
     extra_ball_collect_count: -1
-  extra_ball_advances.1{current_player.setting_extra_ball==1}:
+  score_inlane{settings.extra_ball_award == 1 and current_player.extra_ball_collect_count > 0}:
     extra_ball: 1 
 
 event_player:
-  s_right_inner_outline_active{current_player.extra_ball_collect_count>0}:
-    - extra_ball_advances 
-  s_left_inner_outline_active{current_player.extra_ball_collect_count>0}:
-    - extra_ball_advances
-  score_inlane{current_player.extra_ball_collect_count>0}:
-  # extra_ball_advances.2{currentl_player.setting_extra_ball==0}:
+  score_inlane.1{current_player.extra_ball_collect_count > 0}:
+    - extra_ball_collected
+  score_inlane.10{settings.extra_ball_award == 2 and current_player.extra_ball_collect_count > 0}:
     - score_extra_ball
 
 accruals:
